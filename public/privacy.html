@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Party Manager :: <%= controller.controller_name.capitalize %></title>
-		<%= stylesheet_link_tag :all %>
-		<%= javascript_include_tag :defaults %>
-		<%= csrf_meta_tag %>
-		<%= yield(:head) %>
+		<title>Party Manager :: About</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
 	</head>
 
 	<body>
@@ -35,13 +32,14 @@
 			 </div>
 			 
 			 <div id="body">
-				
-				<% flash.each do |name, msg| %>
-					<%= content_tag :div, msg, :id => "flash_#{name}" %>
-				<% end %>
 
-				<%= content_tag :h1, yield(:title) if show_title? %>
-				<%= yield %>
+				<h1>Our Privacy Policy</h1>
+
+				<p>(This privacy policy has been blindly copied from <a href="http://phase2-67272.heroku.com/privacy">here</a>)</p>
+				<br>
+				<p>Our privacy policy is simple and does not require a lawyer to understand it. We will pounce on the opportunity to sell every bit of information on you we have at our disposal in order to boost our bottom line. We will gladly sell your address, phone, email, age, name of pet, name of favorite superhero, color of bunny slippers you wear at home, and the like, to any willing buyer who will pay us the big bucks. (BTW, we know you wear bunny slippers at home and we know what color they are. You really have no secrets from us.) If you have sensitive information that you don't want us to share with the world, then keep it to yourself -- don't tell us.</p>
+<br><br>
+<p>It's really that simple.</p>
 			 
 			 </div> <!-- End of body -->
 			 

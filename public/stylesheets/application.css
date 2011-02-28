@@ -1,75 +1,115 @@
+/*
+      Created by Vidur Murali. 27th February, 2011
+	  email: vidur.murali@gmail.com
+	  
+	  Basic template from www.Code-Sucks.com
+*/
+
+* { padding: 0; margin: 0; }
+
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+	background-color: #FFF;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
 }
 
-a img {
-  border: none;
+h1 {
+	font-size:175%;
+	color:#006991;
+	margin:.10em 0 .25em 0;
+}
+
+h2 {
+	font-size:125%;
+	color:#00445E;
+	margin:.05em 0 .15em 0;
+}
+
+h3 {
+	font-size:105%;
+	color:#00445E;
+	margin:.05em 0 .15em 0;
 }
 
 a {
-  color: #0000FF;
+	color: #006991; 
+	text-decoration:none;
 }
 
-.clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
+p {
+	font-size:1.15em;
+	text-align: justify;
+	line-height: 1.5;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	margin-right:10px;
 }
 
-#container {
-  width: 75%;
-  margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+p a {
+
 }
 
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
+#container { 
+	margin: 0 auto;
+	width: 922px;
 }
 
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+#header {
+	color: #333;
+	width: 900px;
+	float: left;
+	padding: 0;
+	height: 150px;
+	margin: 10px 0px 5px 0px;
+	background: #FFF;
 }
 
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
+#navigation {
+	float: right;
+	width: 678px;
+	color: #333;
+	padding: 4px;
+	/*border: 1px solid #ccc; */
+	margin: 0px 0px 5px 0px;
+	background: #FFF;
 }
 
-.fieldWithErrors {
-  display: inline;
+#navigation ul { list-style:none; padding:0; margin:0;}
+#navigation li { float:left; margin: 0 0.15em; font-weight:bold;}
+#navigation li a { background:#006991; height: 2em; line-height: 2em; float: left; width: 9em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
+#navigation li a:current { background:#00A1DF; color:#000;}
+
+#sidebar { 
+	background: #FFF;
+	margin: 44px 5px 5px 0px;
+	padding: 10px;
+	height: 350px;
+	width: 195px;
+	float: left;
 }
 
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
+#sidebar ul { list-style:none; padding:0; margin:0;}
+#sidebar li { margin: 5px 0; font-weight:bold; font-size:14pt;}
+#sidebar li a { background:#006991; height: 2em; line-height: 2em; float: center; width: 10em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
+
+#body { 
+	float: right;
+	color: #333;
+	border: 1px solid #ccc;
+	background: #F2F2E6;
+	margin: 0px 0px 5px 0px;
+	padding: 10px;
+	min-height: 350px;
+	width: 678px;
+	display: inline;
+}
+#footer { 
+	width: 900px;
+	clear: both;
+	color: #3CBEEF;
+	border: 1px solid #ccc;
+	background: #006991;
+	margin: 0px 0px 10px 0px;
+	padding: 10px;
 }
 
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.error_messages ul {
-  margin: 0;
-}
+#footer a { color:#6CCBEF;}

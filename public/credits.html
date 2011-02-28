@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Party Manager :: <%= controller.controller_name.capitalize %></title>
-		<%= stylesheet_link_tag :all %>
-		<%= javascript_include_tag :defaults %>
-		<%= csrf_meta_tag %>
-		<%= yield(:head) %>
+		<title>Party Manager :: About</title>
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
 	</head>
 
 	<body>
@@ -36,13 +33,12 @@
 			 
 			 <div id="body">
 				
-				<% flash.each do |name, msg| %>
-					<%= content_tag :div, msg, :id => "flash_#{name}" %>
-				<% end %>
-
-				<%= content_tag :h1, yield(:title) if show_title? %>
-				<%= yield %>
-			 
+				<h1>Credits</h1>
+				<p>Code and Text have been shamelessly copied from the following places:</p>	
+				<br>
+				<h2>Basic CSS Layout:</h2><p><a href="www.code-sucks.com">www.Code-Sucks.com</a></p>
+				<br>
+				<h2>Privacy Policy:</h2><p><a href="http://phase2-67272.heroku.com/privacy">ProfH's sample Party Manager's Privacy Policy</a></p>
 			 </div> <!-- End of body -->
 			 
 			 <div id="footer" align="center">

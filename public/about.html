@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Party Manager :: <%= controller.controller_name.capitalize %></title>
-		<%= stylesheet_link_tag :all %>
-		<%= javascript_include_tag :defaults %>
-		<%= csrf_meta_tag %>
-		<%= yield(:head) %>
+		<title>Party Manager :: About</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
 	</head>
 
 	<body>
@@ -36,12 +33,11 @@
 			 
 			 <div id="body">
 				
-				<% flash.each do |name, msg| %>
-					<%= content_tag :div, msg, :id => "flash_#{name}" %>
-				<% end %>
+				<h1>About the Party Manager</h1>
 
-				<%= content_tag :h1, yield(:title) if show_title? %>
-				<%= yield %>
+				<p>This here be a Party Manager application coded in Ruby for the Application Design and Development course at Carnegie Mellon.</p>
+				<br><br>
+				<p>And here be a <a href="http://rook.hss.cmu.edu/~67272/">link</a> to the course website.</p>
 			 
 			 </div> <!-- End of body -->
 			 
