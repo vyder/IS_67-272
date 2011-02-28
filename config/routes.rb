@@ -1,7 +1,17 @@
 PartyManager::Application.routes.draw do
   get "home/index"
 
+	match "home" => 'home#index', :as => 'home'
+
 	match "home/index" => 'home#index', :as => 'home'
+
+	match "home/about" => 'home#about', :as => 'about'
+
+	match "home/contact" => 'home#contact', :as => 'contact'
+
+	match "home/privacy" => 'home#privacy', :as => 'privacy'
+
+	match "home/credits" => 'home#credits', :as => 'credits'
 
   match 'host/edit' => 'hosts#edit', :as => :edit_current_host
 

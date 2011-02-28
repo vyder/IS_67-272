@@ -90,6 +90,7 @@ p a {
 #sidebar ul { list-style:none; padding:0; margin:0;}
 #sidebar li { margin: 5px 0; font-weight:bold; font-size:14pt;}
 #sidebar li a { background:#006991; height: 2em; line-height: 2em; float: center; width: 10em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
+#sidebar li a.inactive { color: #8B8B8B; text-decoration:none;}
 
 #body { 
 	float: right;

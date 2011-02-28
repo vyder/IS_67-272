@@ -13,24 +13,31 @@
 		<div id="container">
 		
 			 <div id="header">
-			 	<a href="/home" align="center"><img src="/images/alt_header.jpg" alt="header" /></a> 
+			 	<a href="/" align="center"><img src="/images/alt_header.jpg" alt="header" /></a> 
 			</div> <!-- End of head -->
 			 
 			 <div id="navigation" align="center">
 			 	<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/contact">Contact us</a></li>
-					<li><a href="/privacy">Privacy Policy</a></li>
-					<li><a href="/credits">Credits</a></li>
+					<li><a href="/home/about">About</a></li>
+					<li><a href="/home/contact">Contact us</a></li>
+					<li><a href="/home/privacy">Privacy Policy</a></li>
+					<li><a href="/home/credits">Credits</a></li>
 				</ul>
 			 </div> <!-- End of nav -->
 			 
 			 <div id="sidebar">
 				<ul>
+					<% if logged_in? %>
 					<li><a href="/parties">Parties</a></li>
 					<li><a href="/guests">Guests</a></li>
-					<li><a href="/login">Log In</a></li>
+					<li><%= link_to "My Account", edit_current_host_path %></li>
+					<li><%= link_to "Log out", logout_path %></li>
+					<% else %>
+					<li><a class="inactive" href="/parties">Parties</a></li>
+					<li><a class="inactive" href="/guests">Guests</a></li>
+					<li><%= link_to "Log In", login_path %></li>
+					<% end %>
 				</ul>
 			 </div>
 			 

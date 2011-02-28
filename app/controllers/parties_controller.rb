@@ -1,5 +1,8 @@
 class PartiesController < ApplicationController
-  def index
+
+	before_filter :login_required
+  
+	def index
     @parties = Party.all
   end
 
