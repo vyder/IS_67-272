@@ -1,0 +1,17 @@
+one:
+  name: MyString
+  date: 2011-02-28
+  location: MyString
+  start_time: 2011-02-28 10:57:26
+  end_time: 2011-02-28 10:57:26
+  description: MyString
+  rsvp_date: 2011-02-28
+
+two:
+  name: MyString
+  date: 2011-02-28
+  location: MyString
+  start_time: 2011-02-28 10:57:26
+  end_time: 2011-02-28 10:57:26
+  description: MyString
+  rsvp_date: 2011-02-28

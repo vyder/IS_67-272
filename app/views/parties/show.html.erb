@@ -1,0 +1,36 @@
+<% title "Party" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @party.name %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @party.date %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%= @party.location %>
+</p>
+<p>
+  <strong>Start Time:</strong>
+  <%= @party.start_time %>
+</p>
+<p>
+  <strong>End Time:</strong>
+  <%= @party.end_time %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @party.description %>
+</p>
+<p>
+  <strong>Rsvp Date:</strong>
+  <%= @party.rsvp_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_party_path(@party) %> |
+  <%= link_to "Destroy", @party, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", parties_path %>
+</p>

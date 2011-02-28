@@ -1,4 +1,20 @@
 PartyManager::Application.routes.draw do
+  match 'host/edit' => 'hosts#edit', :as => :edit_current_host
+
+  match 'signup' => 'hosts#new', :as => :signup
+
+  match 'logout' => 'sessions#destroy', :as => :logout
+
+  match 'login' => 'sessions#new', :as => :login
+
+  resources :sessions
+
+  resources :hosts
+
+  resources :parties
+
+  resources :guests
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

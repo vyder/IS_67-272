@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  email: MyString
+  invite_code: MyString
+  expected_attendees: 1
+  actual_attendees: 1
+
+two:
+  name: MyString
+  email: MyString
+  invite_code: MyString
+  expected_attendees: 1
+  actual_attendees: 1

@@ -1,0 +1,29 @@
+<% title "Parties" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Description</th>
+    <th>Rsvp Date</th>
+  </tr>
+  <% for party in @parties %>
+    <tr>
+      <td><%= party.name %></td>
+      <td><%= party.date %></td>
+      <td><%= party.location %></td>
+      <td><%= party.start_time %></td>
+      <td><%= party.end_time %></td>
+      <td><%= party.description %></td>
+      <td><%= party.rsvp_date %></td>
+      <td><%= link_to "Show", party %></td>
+      <td><%= link_to "Edit", edit_party_path(party) %></td>
+      <td><%= link_to "Destroy", party, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Party", new_party_path(party) %></p>
