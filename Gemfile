@@ -1,14 +1,33 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'nifty-generators'
+gem 'will_paginate'
+gem 'validates_timeliness', '~> 3.0.2'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'chronic'
+
+group :development do
+	gem 'wirble'
+	gem 'hirb'
+	gem 'populator3'
+	gem 'faker'
+end
+
+group :test do
+	gem 'shoulda'
+	gem 'factory_girl_rails'
+	gem 'mocha'
+	gem 'cucumber-rails'
+	gem 'capybara'
+	gem 'database_cleaner'
+	gem 'launchy'
+	gem 'simplecov'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
-# Custom Gems
-gem 'nifty-generators'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,5 +51,3 @@ gem 'nifty-generators'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "mocha", :group => :test
-gem "bcrypt-ruby", :require => "bcrypt"
