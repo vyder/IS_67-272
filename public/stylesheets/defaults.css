@@ -1,0 +1,42 @@
+/*
+      Created by Vidur Murali. 27th February, 2011
+	 		email: vidur.murali@gmail.com
+*/
+
+/** Default styling **/
+
+.fieldWithErrors {
+  padding: 0px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 500px;
+  border: 2px solid red;
+  padding: 2	px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -2px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
