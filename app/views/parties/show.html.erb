@@ -6,28 +6,39 @@
 </p>
 <p>
   <strong>Date:</strong>
-  <%= @party.date %>
+  <%= @party.party_date.strftime("%B %d, %Y") %>
 </p>
 <p>
   <strong>Location:</strong>
   <%= @party.location %>
 </p>
 <p>
-  <strong>Start Time:</strong>
-  <%= @party.start_time %>
-</p>
-<p>
-  <strong>End Time:</strong>
-  <%= @party.end_time %>
+  <strong>Time:</strong>
+  <%= @party.start_time.strftime("%I:%M %p") %> - 
+  <%= @party.end_time.strftime("%I:%M %p") %>
 </p>
 <p>
   <strong>Description:</strong>
   <%= @party.description %>
 </p>
 <p>
-  <strong>Rsvp Date:</strong>
-  <%= @party.rsvp_date %>
+  <strong>RSVP date:</strong>
+	<% if @party.rsvp_date %>
+  <%= @party.rsvp_date.strftime("%B %d, %Y") %>
+	<% else %>
+	<%= "No RSVP required" %>
+	<%end%>
 </p>
+<p>
+  <strong>Expected Attendance:</strong>
+	<%= @party.expected %>
+</p>
+<p>
+  <strong>Confirmed Attendance:</strong>
+	<%= @party.confirmed %>
+</p>
+<!-- Guest List -->
+<%= render :partial => "guest_index" %>
 
 <p>
   <%= link_to "Edit", edit_party_path(@party) %> |

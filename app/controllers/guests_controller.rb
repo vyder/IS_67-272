@@ -3,7 +3,8 @@ class GuestsController < ApplicationController
 	before_filter :login_required
 
   def index
-    @guests = Guest.all
+    @guests = Guest.all.paginate :page => params[:page], 
+																 :per_page => 15
   end
 
   def show
@@ -16,8 +17,9 @@ class GuestsController < ApplicationController
 
   def create
     @guest = Guest.new(params[:guest])
+		#@guest.add_invite_code
     if @guest.save
-      flash[:notice] = "Successfully created guest."
+      flash[:notice] = "Guest was successfully created"
       redirect_to @guest
     else
       render :action => 'new'

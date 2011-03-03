@@ -23,7 +23,6 @@ class HostsController < ApplicationController
   def update
     @host = current_host
     if @host.update_attributes(params[:host])
-      flash[:notice] = "Your profile has been updated."
       redirect_to "/"
     else
       render :action => 'edit'

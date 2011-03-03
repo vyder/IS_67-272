@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20110228155759) do
     t.string   "name"
     t.string   "email"
     t.string   "invite_code"
+    t.integer  "party_id"
     t.integer  "expected_attendees"
     t.integer  "actual_attendees"
     t.datetime "created_at"
@@ -23,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20110228155759) do
   end
 
   create_table "hosts", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "username"
     t.string   "email"
     t.string   "password_hash"
@@ -33,7 +36,8 @@ ActiveRecord::Schema.define(:version => 20110228155759) do
 
   create_table "parties", :force => true do |t|
     t.string   "name"
-    t.date     "date"
+    t.integer  "host_id"
+    t.date     "party_date"
     t.string   "location"
     t.time     "start_time"
     t.time     "end_time"

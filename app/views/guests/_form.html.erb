@@ -1,6 +1,10 @@
 <%= form_for @guest do |f| %>
   <%= f.error_messages %>
   <p>
+    <%= f.label :party_id %><br />
+    <%= f.collection_select :party_id, Party.group("name").order("name"), :id, :name %>
+  </p>
+  <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
@@ -9,16 +13,17 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :invite_code %><br />
-    <%= f.text_field :invite_code %>
-  </p>
-  <p>
     <%= f.label :expected_attendees %><br />
     <%= f.text_field :expected_attendees %>
   </p>
-  <p>
-    <%= f.label :actual_attendees %><br />
-    <%= f.text_field :actual_attendees %>
-  </p>
+<!--
+	<p>
+	<%= f.text_field :email,
+      :style => "color:#aaa;",
+      :value => "email ID...",
+      :onfocus => "if(this.getValue()=='email ID...'){this.clear();this.style.color = '#000';}",
+      :onblur => "if(this.getValue()==''){this.setValue('email ID...');this.style.color = '#aaa';}" %>
+	</p>
+-->
   <p><%= f.submit %></p>
 <% end %>

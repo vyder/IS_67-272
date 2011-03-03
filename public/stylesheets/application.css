@@ -5,6 +5,8 @@
 	  Basic template from www.Code-Sucks.com
 */
 
+/** General Styling **/
+
 * { padding: 0; margin: 0; }
 
 body {
@@ -44,9 +46,67 @@ p {
 	margin-right:10px;
 }
 
-p a {
-
+p#button a {
+	color:#FFF;
 }
+
+/** Button Styles 
+	* ---------------
+	* Original Styles by Monjurul Dolon
+	* url: http://devgrow.com/super-simple-css-buttons/
+	**/
+
+.button {
+	padding: 5px 10px;
+	display: inline;
+	background: #777 url(button.png) repeat-x bottom;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-shadow: 1px 1px #666;
+}
+
+.button:hover {
+	background-position: 0 center;
+}
+
+.button:active {
+	background-position: 0 top;
+	position: relative;
+	top: 1px;
+	padding: 6px 10px 4px;
+}
+
+.button.red { background-color: #e50000; }
+.button.purple { background-color: #9400bf; }
+.button.green { background-color: #58aa00; }
+.button.orange { background-color: #ff9c00; }
+.button.blue { background-color: #2c6da0; }
+.button.black { background-color: #333; }
+.button.white { background-color: #fff; color: #000; text-shadow: 1px 1px #fff; }
+.button.small { font-size: 75%; padding: 3px 7px; }
+.button.small:active { padding: 4px 7px 2px; background-position: 0 top; }
+.button.large { font-size: 125%; padding: 7px 12px; }
+.button.large:active { padding: 8px 12px 6px; background-position: 0 top; }
+
+/*- END Button Styles -*/
+
+/** Universal Classes **/
+
+.right {
+	float:right;
+}
+
+.left {
+	float:left;
+}
+/*- END Universal Classes -*/
+
+/** DIV IDs **/
 
 #container { 
 	margin: 0 auto;
@@ -54,7 +114,7 @@ p a {
 }
 
 #header {
-	color: #333;
+	color: #3CBEEF;
 	width: 900px;
 	float: left;
 	padding: 0;
@@ -65,31 +125,31 @@ p a {
 
 #navigation {
 	float: right;
-	width: 678px;
+	width: 915px;
+/*	background:#3CBEEF;*/
 	color: #333;
 	padding: 4px;
-	/*border: 1px solid #ccc; */
+/*	border: 1px solid #ccc; */
 	margin: 0px 0px 5px 0px;
-	background: #FFF;
 }
 
-#navigation ul { list-style:none; padding:0; margin:0;}
+#navigation ul { list-style:none; padding:0; margin:0; float:right;}
 #navigation li { float:left; margin: 0 0.15em; font-weight:bold;}
-#navigation li a { background:#006991; height: 2em; line-height: 2em; float: left; width: 9em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
+#navigation li a { background:#006991; height: 2em; line-height: 2em; float: left; width: 9em; display: block; border: 0.1em solid #00445E; color: #3CBEEF;  text-decoration: none; text-align: center;}
 #navigation li a:current { background:#00A1DF; color:#000;}
 
 #sidebar { 
-	background: #FFF;
-	margin: 44px 5px 5px 0px;
+/*	background:#3CBEEF;*/
+	margin: 0px 5px 5px 0px;
 	padding: 10px;
 	height: 350px;
-	width: 195px;
+	width: 135px;
 	float: left;
 }
 
 #sidebar ul { list-style:none; padding:0; margin:0;}
 #sidebar li { margin: 5px 0; font-weight:bold; font-size:14pt;}
-#sidebar li a { background:#006991; height: 2em; line-height: 2em; float: center; width: 10em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
+#sidebar li a { background:#006991; height: 2em; line-height: 2em; float: center; width: 7em; display: block; border: 0.1em solid #dcdce9; color: #3CBEEF;  text-decoration: none; text-align: center;}
 #sidebar li a.inactive { color: #8B8B8B; text-decoration:none;}
 
 #body { 
@@ -100,7 +160,7 @@ p a {
 	margin: 0px 0px 5px 0px;
 	padding: 10px;
 	min-height: 350px;
-	width: 678px;
+	width: 730px;
 	display: inline;
 }
 #footer { 
@@ -114,3 +174,75 @@ p a {
 }
 
 #footer a { color:#6CCBEF;}
+
+/** Styling Tables 
+	* ---------------
+	* Original Styles by R. Christie
+	* url: http://www.smashingmagazine.com/2008/08/13/top-10-css-table-designs/
+	**/
+#horz-Minimalist
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+/*	background: #fff;*/
+	margin: 2px 10px 15px 10px;
+	width: 90%;
+	min-height: 405px;
+	border-collapse: collapse;
+	text-align: left;
+}
+#horz-Minimalist th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+#horz-Minimalist td
+{
+	color: #669;
+	padding: 9px 8px 0px 8px;
+}
+#horz-Minimalist tbody tr:hover td
+{
+	color: #009;
+}
+
+/** Default styling **/
+
+.fieldWithErrors {
+  padding: 0px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 500px;
+  border: 2px solid red;
+  padding: 2	px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -2px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

@@ -4,6 +4,7 @@ class CreateGuests < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :invite_code
+			t.integer :party_id
       t.integer :expected_attendees
       t.integer :actual_attendees
       t.timestamps

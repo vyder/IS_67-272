@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+		@current_host = current_host
   end
 
 	def about

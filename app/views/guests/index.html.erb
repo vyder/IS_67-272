@@ -1,25 +1,39 @@
-<% title "Guests" %>
+<% title "My Guests" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Invite Code</th>
-    <th>Expected Attendees</th>
-    <th>Actual Attendees</th>
-  </tr>
-  <% for guest in @guests %>
-    <tr>
-      <td><%= guest.name %></td>
-      <td><%= guest.email %></td>
-      <td><%= guest.invite_code %></td>
-      <td><%= guest.expected_attendees %></td>
-      <td><%= guest.actual_attendees %></td>
-      <td><%= link_to "Show", guest %></td>
-      <td><%= link_to "Edit", edit_guest_path(guest) %></td>
-      <td><%= link_to "Destroy", guest, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
+<table id="horz-Minimalist">
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+			<th>Party</th>
+		  <th>Name</th>
+		  <th>Expected</th>
+		  <th>Actual</th>
+		</tr>
+	</thead>
+
+	<!-- Table Body -->
+	<tbody>
+		<% for guest in @guests %>
+		  <tr>
+				<td>
+				<% if !guest.party.nil? %>
+				<%= link_to guest.party.name, party_path(guest.party) %>
+				<%end%></td>
+		    <td><%= link_to guest.name, guest %></td>
+		    <td align="center"><%= guest.expected_attendees %></td>
+		    <td align="center"><%= guest.actual_attendees %></td>
+		    <td><%= link_to "Edit", edit_guest_path(guest) %></td>
+		    <td><%= link_to "Destroy", guest, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+
 </table>
 
-<p><%= link_to "New Guest", new_guest_path(guest) %></p>
+<span>
+	<%= will_paginate @guests, :previous_label => "Previous&nbsp;", 
+														 :next_label => "&nbsp;Next" %>
+</span>
+
+<p><%= link_to "Add A New Guest", new_guest_path(guest) %></p>

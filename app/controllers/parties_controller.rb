@@ -3,11 +3,13 @@ class PartiesController < ApplicationController
 	before_filter :login_required
   
 	def index
-    @parties = Party.all
+    @parties = Party.group("name").order("name").paginate :page => params[:page], :per_page => 15
   end
 
   def show
     @party = Party.find(params[:id])
+
+		@guests = @party.guests
   end
 
   def new
