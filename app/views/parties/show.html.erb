@@ -1,47 +1,52 @@
-<% title "Party" %>
+<% title "#{@party.name} | Details" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @party.name %>
-</p>
-<p>
-  <strong>Date:</strong>
-  <%= @party.party_date.strftime("%B %d, %Y") %>
-</p>
-<p>
-  <strong>Location:</strong>
-  <%= @party.location %>
-</p>
-<p>
-  <strong>Time:</strong>
-  <%= @party.start_time.strftime("%I:%M %p") %> - 
-  <%= @party.end_time.strftime("%I:%M %p") %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @party.description %>
-</p>
-<p>
-  <strong>RSVP date:</strong>
-	<% if @party.rsvp_date %>
-  <%= @party.rsvp_date.strftime("%B %d, %Y") %>
-	<% else %>
-	<%= "No RSVP required" %>
-	<%end%>
-</p>
-<p>
-  <strong>Expected Attendance:</strong>
-	<%= @party.expected %>
-</p>
-<p>
-  <strong>Confirmed Attendance:</strong>
-	<%= @party.confirmed %>
-</p>
 <!-- Guest List -->
-<%= render :partial => "guest_index" %>
+<%= render :partial => "mini_guest-list" %>
 
-<p>
-  <%= link_to "Edit", edit_party_path(@party) %> |
-  <%= link_to "Destroy", @party, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", parties_path %>
-</p>
+<div id="show" class="left">
+<!--	
+	<p>
+		<strong>Name:</strong>
+		<%= @party.name %>
+	</p> 
+-->
+	<p>
+		<strong>Date:</strong>
+		<%= @party.party_date.strftime("%B %d, %Y") %>
+	</p>
+	<p>
+		<strong>Location:</strong>
+		<%= @party.location %>
+	</p>
+	<p>
+		<strong>Time:</strong>
+		<%= @party.start_time.strftime("%I:%M %p") %> - 
+		<%= @party.end_time.strftime("%I:%M %p") %>
+	</p>
+	<p>
+		<strong>Description:</strong>
+		<%= @party.description %>
+	</p>
+	<p>
+		<strong>RSVP date:</strong>
+		<% if @party.rsvp_date %>
+		<%= @party.rsvp_date.strftime("%B %d, %Y") %>
+		<% else %>
+		<%= "No RSVP required" %>
+		<%end%>
+	</p>
+	<p>
+		<strong>Expected Attendance:</strong>
+		<%= @party.expected %>
+	</p>
+	<p>
+		<strong>Confirmed Attendance:</strong>
+		<%= @party.confirmed %>
+	</p>
+	<br />
+	<p>
+		<%= link_to "Edit", edit_party_path(@party) %> |
+		<%= link_to "Destroy", @party, :confirm => 'Are you sure?', :method => :delete %> |
+		<%= link_to "View All", parties_path %>
+	</p>
+</div>

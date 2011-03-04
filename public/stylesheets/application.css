@@ -132,3 +132,12 @@ p {
 }
 
 #footer a { color:#6CCBEF;}
+
+#show {
+	width: 50%;
+}
+
+#mini-guest-list {
+	margin-top:-40px;
+	margin-right: 50px;
+}

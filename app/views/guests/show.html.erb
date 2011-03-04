@@ -1,32 +1,36 @@
-<% title "Guest" %>
+<% title "#{@guest.name} | Guest Details" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @guest.name %>
-</p>
-<p>
-  <strong>Party:</strong>
-  <%= @guest.party.name if !@guest.party.nil? %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @guest.email %>
-</p>
-<p>
-  <strong>Invite code:</strong>
-  <%= @guest.invite_code %>
-</p>
-<p>
-  <strong>Expected attendees:</strong>
-  <%= @guest.expected_attendees %>
-</p>
-<p>
-  <strong>Actual attendees:</strong>
-  <%= @guest.actual_attendees %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_guest_path(@guest) %> |
-  <%= link_to "Destroy", @guest, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", guests_path %>
-</p>
+<div id="show" class="left">
+<!--
+	<p>
+		<strong>Name:</strong>
+		<%= @guest.name %>
+	</p>
+-->
+	<p>
+		<strong>Party:</strong>
+		<%= @guest.party.name if !@guest.party.nil? %>
+	</p>
+	<p>
+		<strong>Email:</strong>
+		<%= @guest.email %>
+	</p>
+	<p>
+		<strong>Invite code:</strong>
+		<%= @guest.invite_code %>
+	</p>
+	<p>
+		<strong>Expected attendees:</strong>
+		<%= @guest.expected_attendees %>
+	</p>
+	<p>
+		<strong>Actual attendees:</strong>
+		<%= @guest.actual_attendees %>
+	</p>
+	<br />
+	<p>
+		<%= link_to "Edit", edit_guest_path(@guest) %> |
+		<%= link_to "Destroy", @guest, :confirm => 'Are you sure?', :method => :delete %> |
+		<%= link_to "View All", guests_path %>
+	</p>
+</div>
