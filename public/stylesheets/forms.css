@@ -1,0 +1,12 @@
+/*
+      Created by Vidur Murali. 3rd March, 2011
+	 		email: vidur.murali@gmail.com
+*/
+
+label {
+  width: 5em;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
+  display: block
+}

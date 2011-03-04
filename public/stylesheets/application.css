@@ -40,6 +40,11 @@ a {
 	text-decoration:none;
 }
 
+a:hover {
+	color: #00445E; 
+	text-decoration:none;
+}
+
 p {
 	font-size:1.15em;
 	text-align: justify;

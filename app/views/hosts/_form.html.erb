@@ -1,28 +1,30 @@
 <%= form_for @host do |f| %>
   <%= f.error_messages %>
 	<p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.label :first_name %> <%= f.text_field :first_name %>
   </p>
+	<br />
 	<p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.label :last_name %> <%= f.text_field :last_name %>
   </p>
+	<br />
   <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.label :username %> <%= f.text_field :username %>
   </p>
+	<br />
   <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email, "Email ID" %> <%= f.text_field :email %>
   </p>
+	<br />
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.label :password %> <%= f.password_field :password %>
   </p>
+	<br />
   <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirm Password" %> <%= f.password_field :password_confirmation %>
   </p>
+	<br />
+	<br />
   <p><%= f.submit (@host.new_record? ? "Sign up" : "Update") %></p>
 <% end %>
+	<br />

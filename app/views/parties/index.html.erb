@@ -1,6 +1,7 @@
 <h1><% title "My Parties" %></h1>
 
 <span id="button" class="button theme-color right">
+	<%= link_to image_tag("add-icon.ico"), :controller => 'parties', :action => 'new' %>
 	<%= link_to "Host a New Party", :controller => 'parties', :action => 'new' %>
 </span>
 

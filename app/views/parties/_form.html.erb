@@ -1,32 +1,33 @@
 <%= form_for @party do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :name %> <%= f.text_field :name %>
   </p>
+	<br />
   <p>
-    <%= f.label :party_date %><br />
-    <%= f.date_select :party_date, :order => [:month, :day, :year] %>
+    <%= f.label :party_date %> <%= f.date_select :party_date, :order => [:month, :day, :year] %>
   </p>
+	<br />
   <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :location %> <%= f.text_field :location %>
   </p>
+	<br />
   <p>
-    <%= f.label :start_time %><br />
-    <%= f.time_select :start_time %>
+    <%= f.label :start_time %> <%= f.time_select :start_time %>
   </p>
+	<br />
   <p>
-    <%= f.label :end_time %><br />
-    <%= f.time_select :end_time %>
+    <%= f.label :end_time %> <%= f.time_select :end_time %>
   </p>
+	<br />
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description %> <%= f.text_field :description %>
   </p>
+	<br />
   <p>
-    <%= f.label :rsvp_date %><br />
-    <%= f.date_select :rsvp_date, :order => [:month, :day, :year] %>
+    <%= f.label :rsvp_date %> <%= f.date_select :rsvp_date, :order => [:month, :day, :year] %>
   </p>
+	<br />
   <p><%= f.submit %></p>
 <% end %>
+	<br />

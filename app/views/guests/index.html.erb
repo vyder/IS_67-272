@@ -1,6 +1,7 @@
 <% title "My Guests" %>
 
 <span id="button" class="button theme-color right">
+	<%= link_to image_tag("add-icon.ico"), :controller => 'guests', :action => 'new' %>
 	<%= link_to "Add A New Guest", :controller => 'guests', :action => 'new' %>
 </span>
 

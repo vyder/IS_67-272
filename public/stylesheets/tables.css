@@ -1,0 +1,45 @@
+/*
+      Created by Vidur Murali. 3rd March, 2011
+	 		email: vidur.murali@gmail.com
+*/
+
+/** Styling Tables 
+	* ---------------
+	* Original Styles by R. Christie
+	* url: http://www.smashingmagazine.com/2008/08/13/top-10-css-table-designs/
+	**/
+
+#horz-Minimalist {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+/*	background: #fff;*/
+	margin: 2px 10px 15px 10px;
+	width: 90%;
+	min-height: 405px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+#horz-Minimalist th {
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+
+#horz-Minimalist td {
+	color: #669;
+	padding: 9px 8px 0px 8px;
+}
+
+#horz-Minimalist tbody tr:hover td
+{
+	color: #009;
+}
+
+#horz-Minimalist th a:hover {
+	color: #000;
+}
+
+
