@@ -1,9 +1,7 @@
-<h1><% title "My Parties" %></h1>
-
 <span id="button" class="button theme-color right">
 	<%= link_to "Host a New Party", :controller => 'parties', :action => 'new' %>
 </span>
-
+<p>Here are your upcoming parties:</p>
 <table id="horz-Minimalist">
 
 	<!-- Table Header -->
@@ -12,8 +10,6 @@
 		  <th>Name</th>
 		  <th>Date</th>
 		  <th>Start Time</th>
-		  <th>End Time</th>
-			<th>RSVPs</th>
 		</tr>
 	</thead>
 
@@ -21,13 +17,12 @@
 	<tbody>
 		<% for party in @parties %>
 		  <tr>
+				<% if !party.nil? %>
 		    <td><%= link_to party.name, party %></td>
-		    <td><%= party.party_date.strftime("%B %d, %Y") %></td>
+		    <td><%= party.party_date.strftime("%B %d, %Y") if !party.party_date.nil? %></td>
 		    <td><%= party.start_time.strftime("%I:%M%P") %></td>
-		    <td><%= party.end_time.strftime("%I:%M%P") %></td>
-		    <td><%= party.rsvp_date.strftime("%B %d, %Y") if party.rsvp_date %></td>
 		    <td><%= link_to image_tag("edit-icon.svg"), edit_party_path(party) %></td>
-		    <td><%= link_to image_tag("delete-icon.svg"), party, :confirm => 'Are you sure?', :method => :delete %></td>
+				<% end %>
 		  </tr>
 		<% end %>
 	</tbody>
@@ -38,5 +33,3 @@
 	<%= will_paginate @parties, :previous_label => "Previous&nbsp;", 
 													 		:next_label => "&nbsp;Next" %>
 </span>
-
-

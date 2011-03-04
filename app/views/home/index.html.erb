@@ -1,8 +1,9 @@
 <% if logged_in? %>
-<h1> Welcome, <%= @current_host.first_name %> <%= @current_host.last_name %> </h1>
+	<h1> Welcome, <%= link_to "#{@current_host.first_name} #{@current_host.last_name}.", host_path(current_host)%> </h1>
+	<%= render 'parties/upcoming_parties' %>
 <% else %>
-<h1> Welcome to the Party Manager! </h1>
+	<h1> Welcome to the Party Manager! </h1>
 
-<p> Now in open beta, <a href="/signup">sign up</a> is free for errbody. </p>
-<p> Already have an account? <a href="/login">Log In</a> to host some groovy parties!</p>
+	<p> Now in open beta, <a href="/signup">sign up</a> is free for errbody. </p>
+	<p> Already have an account? <a href="/login">Log In</a> to host some groovy parties!</p>
 <% end %>

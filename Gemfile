@@ -7,6 +7,7 @@ gem 'will_paginate'
 gem 'validates_timeliness', '~> 3.0.2'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'chronic'
+gem 'validates_timeliness', '~> 3.0.2'
 
 group :development do
 	gem 'wirble'

@@ -11,52 +11,31 @@
 	<body>
 
 		<div id="container">
-		
-			 <div id="header">
-			 	<a href="/" align="center"><img src="/images/alt_header.jpg" alt="header" /></a> 
-			</div> <!-- End of head -->
-			 
-			 <div id="navigation" align="center">
-			 	<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/home/about">About</a></li>
-					<li><a href="/home/contact">Contact us</a></li>
-					<li><a href="/home/privacy">Privacy Policy</a></li>
-					<li><a href="/home/credits">Credits</a></li>
-				</ul>
-			 </div> <!-- End of nav -->
-			 
-			 <div id="sidebar">
-				<ul>
-					<% if logged_in? %>
-					<li><a href="/parties">Parties</a></li>
-					<li><a href="/guests">Guests</a></li>
-					<li><%= link_to "My Account", edit_current_host_path %></li>
-					<li><%= link_to "Logout", logout_path %></li>
-					<% else %>
-					<li><a class="inactive" href="/parties">Parties</a></li>
-					<li><a class="inactive" href="/guests">Guests</a></li>
-					<li><%= link_to "Log In", login_path %></li>
-					<% end %>
-				</ul>
-			 </div> <!-- End of sidebar -->
-			 
-			 <div id="body">
-				
+
+			<div id="header">
+				<a href="/" align="center"><img src="/images/alt_header.jpg" alt="header" /></a> 
+			</div>
+
+			<!-- Top Navigation Bar -->
+			<%= render 'layouts/nav-bar' %>
+
+			<!-- Sidebar -->
+			<%= render 'layouts/sidebar' %>
+
+			<div id="body">
 				<% flash.each do |name, msg| %>
-					<%= content_tag :div, msg, :id => "flash_#{name}" %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
 				<% end %>
 
 				<%= content_tag :h1, yield(:title) if show_title? %>
 				<%= yield %>
-			 
-			 </div> <!-- End of body -->
-			 
-			 <div id="footer" align="center">
-						Webmaster: His Royal Evil OverLord <a href="http://www.google.com/recaptcha/mailhide/d?k=01mjiSeMYDdASAq27Vg83XeA==&c=WasFQrq0HCEfvAUan8O_WldBHl-gBwlgWSu6CKnJISg=">Vidur Murali</a> &copy 2011
-			</div> <!-- End of footer -->
-			 
+			</div>
+
+			<!-- Footer -->
+			<%= render 'layouts/footer' %>
+
 		</div>
+		<!-- End of container -->
    
 	</body>
 </html>

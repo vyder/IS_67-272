@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if host
       session[:host_id] = host.id
       flash[:notice] = "You are now logged in"
-      redirect_to_target_or_default("/")
+      redirect_to "/"
     else
       flash.now[:error] = "Invalid login or password."
       render :action => 'new'

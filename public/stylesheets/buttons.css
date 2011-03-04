@@ -3,12 +3,6 @@
 	 		email: vidur.murali@gmail.com
 */
 
-/** Relevant HTML elements **/
-
-p#button a {
-	color:#FFF;
-}
-
 /** Button Styles 
 	* ---------------
 	* Original Styles by Monjurul Dolon
@@ -18,7 +12,7 @@ p#button a {
 .button {
 	padding: 5px 10px;
 	display: inline;
-	background: #777 url(button.png) repeat-x bottom;
+	background: #777 url(../images/button.png) repeat-x bottom;
 	border: none;
 	color: #fff;
 	cursor: pointer;
@@ -26,21 +20,21 @@ p#button a {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	text-shadow: 1px 1px #666;
+	text-shadow: 1px 1px #91DBF7;
 }
 
 .button:hover {
-	background-position: 0 center;
+	background-position: 0 bottom;
 }
 
 .button:active {
 	background-position: 0 top;
 	position: relative;
-	top: 1px;
+	top: 3px;
 	padding: 6px 10px 4px;
 }
 
-.button.theme-blue {background-color: #3CBEEF; }
+.button.theme-color {background-color: #FFFFFF; }
 .button.red { background-color: #e50000; }
 .button.purple { background-color: #9400bf; }
 .button.green { background-color: #58aa00; }

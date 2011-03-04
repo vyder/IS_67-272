@@ -1,0 +1,14 @@
+<div id="sidebar">
+	<ul>
+		<% if logged_in? %>
+			<li><a href="/parties">Parties</a></li>
+			<li><a href="/guests">Guests</a></li>
+			<li><%= link_to "My Account", edit_current_host_path %></li>
+			<li><%= link_to "Logout", logout_path %></li>
+		<% else %>
+			<li><a class="inactive" href="/parties">Parties</a></li>
+			<li><a class="inactive" href="/guests">Guests</a></li>
+			<li><%= link_to "Log In", login_path %></li>
+		<% end %>
+	</ul>
+</div> <!-- End of sidebar -->

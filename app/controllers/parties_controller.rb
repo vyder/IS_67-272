@@ -3,7 +3,7 @@ class PartiesController < ApplicationController
 	before_filter :login_required
   
 	def index
-    @parties = Party.group("name").order("name").paginate :page => params[:page], :per_page => 15
+    @parties = Party.group("name").order("name").paginate :page => params[:page], :per_page => 12
   end
 
   def show

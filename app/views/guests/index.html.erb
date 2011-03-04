@@ -1,5 +1,9 @@
 <% title "My Guests" %>
 
+<span id="button" class="button theme-color right">
+	<%= link_to "Add A New Guest", :controller => 'guests', :action => 'new' %>
+</span>
+
 <table id="horz-Minimalist">
 
 	<!-- Table Header -->
@@ -35,5 +39,3 @@
 	<%= will_paginate @guests, :previous_label => "Previous&nbsp;", 
 														 :next_label => "&nbsp;Next" %>
 </span>
-
-<p id="button" class="button theme-blue right"><%= link_to "Add A New Guest", new_guest_path(guest) %></p>
