@@ -1,6 +1,6 @@
 <% if logged_in? %>
 	<h1> Welcome, <%= link_to "#{@current_host.first_name} #{@current_host.last_name}.", host_path(current_host)%> </h1>
-	<%= render 'parties/upcoming_parties' %>
+	<!-- <%= render 'parties/upcoming_parties' %> -->
 <% else %>
 	<h1> Welcome to the Party Manager! </h1>
 
