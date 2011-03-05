@@ -15,8 +15,6 @@ test: &test
   pool: 5
   timeout: 5000
 
-@/"
-
 production: 
   encoding: unicode
   adapter: postgresql
