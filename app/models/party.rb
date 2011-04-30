@@ -4,10 +4,15 @@ class Party < ActiveRecord::Base
 									:location, 
 									:start_time, :end_time, 
 									:description, 
-									:rsvp_date
+									:rsvp_date,
+									:host_id,
+									:location_id,
+									:party_type_id
 
 	# Relationships
 	belongs_to :host
+	belongs_to :party_type
+	belongs_to :location
 	has_many :guests
 
 	# Validations
@@ -20,6 +25,7 @@ class Party < ActiveRecord::Base
 	validate :party_times_are_valid
 
 	# Scopes
+	scope :all, order(:party_date)
 
 	# Methods
 	def confirmed

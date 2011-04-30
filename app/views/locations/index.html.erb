@@ -1,0 +1,41 @@
+<% title "My Locations" %>
+
+<span id="button" class="button theme-color right">
+	<%= link_to image_tag("add-icon.ico"), :controller => 'locations', :action => 'new' %>
+	<%= link_to "Add A New Location", :controller => 'locations', :action => 'new' %>
+</span>
+
+<table id="horz-Minimalist">
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+			<th>Name</th>
+		  <th>Street</th>
+		  <th>City</th>
+		  <th>State</th>
+		  <th>Zip</th>
+		</tr>
+	</thead>
+
+	<!-- Table Body -->
+	<tbody>
+		<% for location in @locations %>
+			<tr>
+			  <td><%= link_to location.name, location %></td>
+			  <td><%= location.street %></td>
+			  <td><%= location.city %></td>
+			  <td><%= location.state %></td>
+			  <td><%= location.zip %></td>
+			  <td><%= link_to image_tag("edit-icon.svg"), edit_location_path(location) %></td>
+			  <td><%= link_to image_tag("delete-icon.svg"), location, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
+
+<span>
+	<%= will_paginate @locations, :previous_label => "Previous&nbsp;", 
+														 		:next_label => "&nbsp;Next" %>
+</span>

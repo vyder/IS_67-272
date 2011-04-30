@@ -1,13 +1,26 @@
 <div id="sidebar">
+
+<!--	<% if logged_in? %>
+	<ul class="active">
+	<% else %>
+	<ul class="inactive">
+	<% end %> -->
+
 	<ul>
 		<% if logged_in? %>
 			<li><a href="/parties">Parties</a></li>
 			<li><a href="/guests">Guests</a></li>
+			<li><a href="/locations">Locations</a></li>
+			<li><a href="/party_types">Party Types</a></li>
+			<li><a href="/invitations">Invitations</a></li>
 			<li><%= link_to "My Account", edit_current_host_path %></li>
 			<li><%= link_to "Logout", logout_path %></li>
 		<% else %>
 			<li><a class="inactive" href="/parties">Parties</a></li>
 			<li><a class="inactive" href="/guests">Guests</a></li>
+			<li><a class="inactive" href="/locations">Locations</a></li>
+			<li><a class="inactive" href="/party_types">Party Types</a></li>
+			<li><a class="inactive" href="/invitations">Invitations</a></li>
 			<li><%= link_to "Log In", login_path %></li>
 		<% end %>
 	</ul>

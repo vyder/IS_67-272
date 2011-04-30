@@ -1,0 +1,33 @@
+<h1><% title "My Party Types" %></h1>
+
+<span id="button" class="button theme-color right">
+	<%= link_to image_tag("add-icon.ico"), :controller => 'party_types', :action => 'new' %>
+	<%= link_to "Create a New Party Type", :controller => 'party_types', :action => 'new' %>
+</span>
+
+<table id="horz-Minimalist">
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+		  <th>Name</th>
+			<th>Active</th>
+		</tr>
+	</thead>
+
+	<!-- Table Body -->
+	<tbody>
+		<% for party_type in @party_types %>
+		  <tr>
+		    <td><%= link_to party_type.name, party %></td>
+				<td><%= party_type.active %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+
+</table>
+
+<span>
+	<%= will_paginate @party_types, :previous_label => "Previous&nbsp;", 
+													 				:next_label => "&nbsp;Next" %>
+</span>

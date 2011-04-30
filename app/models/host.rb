@@ -6,12 +6,17 @@ class Host < ActiveRecord::Base
 									:email, 
 									:password, 
 									:password_confirmation
-
-	has_many:parties
-
   attr_accessor :password
   before_save :prepare_password
 
+	# Relationships
+	has_many :parties
+	has_many :guests
+	has_many :locations
+
+	# Scopes - none
+
+	# Validations
 	validates_presence_of :first_name, :last_name
   validates_presence_of :username
   validates_uniqueness_of :username, :email, :allow_blank => true

@@ -1,0 +1,24 @@
+<%= form_for @location do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %> <%= f.text_field :name %>
+  </p>
+	<br />
+  <p>
+    <%= f.label :street %> <%= f.text_field :street %>
+  </p>
+	<br />
+  <p>
+    <%= f.label :city %> <%= f.text_field :city %>
+  </p>
+	<br />
+  <p>
+	<%= f.label :state %> <%= f.select(:state, Location::STATES_LIST, :prompt => "Select ...") %>
+  </p>
+	<br />
+  <p>
+    <%= f.label :zip %> <%= f.text_field :zip %>
+  </p>
+	<br />
+  <p><%= f.submit %></p>
+<% end %>

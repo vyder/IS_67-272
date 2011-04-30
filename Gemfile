@@ -8,6 +8,7 @@ gem 'validates_timeliness', '~> 3.0.2'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'chronic'
 gem 'validates_timeliness', '~> 3.0.2'
+gem 'geokit'
 
 group :development do
 	gem 'wirble'

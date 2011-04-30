@@ -1,4 +1,8 @@
 PartyManager::Application.routes.draw do
+  resources :locations
+
+  resources :party_types
+
   get "home/index"
 
 	match "home" => 'home#index', :as => 'home'
