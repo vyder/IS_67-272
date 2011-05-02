@@ -11,35 +11,36 @@ Feature: Manage guests
 	Scenario: View my guests
 		When I go to my guests page
 		Then I should see "My Guests" within "h1"
-		And I should see "Party" within "th"
 		And I should see "Name"
-		And I should see "Expected"
-		And I should see "Actual"
+		And I should see "Email"
 		And I should see "Add A New Guest"
 		And I should see "Heimann Family"
 		And I should see "Phelps Family"
 		And I should see "Quesenberry Family"
-		And I should see "Birthday!"
+		
+	Scenario: View only my guests
+		Given another host with parties
+		When I go to my guests page
+		Then I should see "Heimann Family"
+		And I should see "Phelps Family"
+		And I should see "Quesenberry Family"
+		And I should not see "Schoenstein Family"
+		And I should not see "Kroger Family"
 	
 	Scenario: View guest details
 		Given an existing artis family guest
 		When I go to this guest details page
-		Then I should see "Name: Artis Family"
-		And I should see "Expected attendees: 5"	
-		And I should see "Actual attendees: 5"
-		And I should see "Invite code"
-		
-	Scenario: Counts on the party page are correct
-		When I go to the birthday party details page
-		Then I should see "Expected Attendance: 27"
-		And I should see "Confirmed Attendance: 18"
-		And I should see "Invited Guests"
-		And I should see "Heimann Family"
-		And I should see "Phelps Family"
-		And I should see "Quesenberry Family"
-		And I should see "Birthday!"
+		# Then show me the page
+		Then I should see "Artis Family"
+		And I should see "Email: artis5@example.com"
+		And I should see "This is the song that runs under the credits..."	
+
 
 	# CREATE METHODS
+	Scenario: Create a new guest - no expected attendees field
+		When I go to the new guest page
+		Then I should not see expected attendees option
+	
 	Scenario: Create a new guest - no actual/confirmed attendees field
 		When I go to the new guest page
 		Then I should not see actual attendees option
@@ -52,17 +53,13 @@ Feature: Manage guests
 		When I go to the new guest page
 		And I fill in "guest_name" with "Mansar Family"
 		And I fill in "guest_email" with "smansar@example.com"
-		And I fill in "guest_expected_attendees" with "4"
-		And I select "Birthday!" from "guest_party_id"
+		And I fill in "guest_notes" with "Your mother was a hamster and your father smelt of elderberries!"
 		And I press "Create Guest"
 		Then I should see "Guest was successfully created"
-		And I should see "Invite code"
 	
 	Scenario: Create a guest fails because of an missing name
 		When I go to the new guest page
 		And I fill in "guest_email" with "smansar@example.com"
-		And I fill in "guest_expected_attendees" with "4"
-		And I select "Birthday!" from "guest_party_id"
 		And I press "Create Guest"
 		Then I should see "Name can't be blank"
 	
@@ -70,47 +67,17 @@ Feature: Manage guests
 		When I go to the new guest page
 		And I fill in "guest_name" with "Mansar Family"
 		And I fill in "guest_email" with "smansar@example,com"
-		And I fill in "guest_expected_attendees" with "4"
-		And I select "Birthday!" from "guest_party_id"
 		And I press "Create Guest"
 		Then I should see "Email is not a valid format"
-	
-	Scenario: Create guest fails b/c of invalid value for expected attendees
-		When I go to the new guest page
-		And I fill in "guest_name" with "Mansar Family"
-		And I fill in "guest_email" with "smansar@example.com"
-		And I fill in "guest_expected_attendees" with "four"
-		And I select "Birthday!" from "guest_party_id"
-		And I press "Create Guest"
-		Then I should see "Expected attendees is not a number"
-	
-	Scenario: Adding 4 expected to a party changes counts and guest list
-		When I go to the new guest page
-		And I fill in "guest_name" with "Mansar Family"
-		And I fill in "guest_email" with "smansar@example.com"
-		And I fill in "guest_expected_attendees" with "4"
-		And I select "Birthday!" from "guest_party_id"
-		And I press "Create Guest"
-		And I go to the birthday party details page
-		Then I should see "Expected Attendance: 31"
-		And I should see "Confirmed Attendance: 18" 
-		And I should see "Mansar Family"
 	
 	
 	# UPDATE METHODS
 	Scenario: Edit a guest is successful
 		Given an existing artis family guest
 		When I go to edit this guest page
-		And I fill in "guest_expected_attendees" with "4"
+		And I fill in "guest_name" with "Rick Artis"
 		And I press "Update Guest"
-		Then I should see "Expected attendees: 4"
-		
-	Scenario: Edit a guest fails b/c of invalid value for expected attendees
-		Given an existing artis family guest
-		When I go to edit this guest page
-		And I fill in "guest_expected_attendees" with "free fred!"
-		And I press "Update Guest"
-		Then I should see "Expected attendees is not a number"
+		Then I should see "Rick Artis"
 		
 	Scenario: Edit a guest fails because of an invalid email
 		Given an existing artis family guest
@@ -118,4 +85,3 @@ Feature: Manage guests
 		And I fill in "guest_email" with "newartis@example,com"
 		And I press "Update Guest"
 		Then I should see "Email is not a valid format"
-	

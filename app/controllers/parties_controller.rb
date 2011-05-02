@@ -3,13 +3,12 @@ class PartiesController < ApplicationController
 	before_filter :login_required
   
 	def index
-    @parties = Party.group("name").order("name").paginate :page => params[:page], :per_page => 12
+    @parties = Party.for_host(current_host).by_name.paginate :page => params[:page], :per_page => 12
   end
 
   def show
     @party = Party.find(params[:id])
-
-		@guests = @party.guests
+		@invitations = @party.invitations
   end
 
   def new
@@ -18,6 +17,7 @@ class PartiesController < ApplicationController
 
   def create
     @party = Party.new(params[:party])
+		@party.host_id = current_host.id
     if @party.save
       flash[:notice] = "Successfully created party."
       redirect_to @party

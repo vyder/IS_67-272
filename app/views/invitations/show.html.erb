@@ -1,0 +1,34 @@
+<% title "Invitation" %>
+
+<p>
+  <strong>Party:</strong>
+  <%= @invitation.party.name %>
+</p>
+<p>
+  <strong>Guest:</strong>
+  <%= @invitation.guest.name %>
+</p>
+<p>
+  <strong>Invite code:</strong>
+  <%= @invitation.invite_code %>
+</p>
+<p>
+  <strong>Expected attendees:</strong>
+  <%= @invitation.expected_attendees %>
+</p>
+<% if !@invitation.party.rsvp_date.nil? %>
+<p>
+	<% if @invitation.actual_attendees != -1 %>
+		<strong>Actual attendees:</strong>
+	  <%= @invitation.actual_attendees %>
+	<% else %>
+		<strong>This guest has not RSVP'd yet</strong>
+	<% end %>
+</p>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_invitation_path(@invitation) %> |
+  <%= link_to "Destroy", @invitation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", invitations_path %>
+</p>

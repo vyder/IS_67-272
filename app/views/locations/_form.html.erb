@@ -13,7 +13,8 @@
   </p>
 	<br />
   <p>
-	<%= f.label :state %> <%= f.select(:state, Location::STATES_LIST, :prompt => "Select ...") %>
+<!--	<%= f.label :state %> <%= f.select(:state, Location::STATES_LIST, :prompt => "Select ...") %> -->
+    <%= f.label :state %> <%= f.text_field :state %>
   </p>
 	<br />
   <p>

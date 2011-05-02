@@ -1,29 +1,24 @@
 class Guest < ActiveRecord::Base
 	attr_accessible :name, 
-									:email, 
-									:invite_code, 
-									:expected_attendees, 
-									:actual_attendees, 
-									:party_id
+									:email,
+									:host_id,
+									:notes
 
 	# Relationships
-	belongs_to :party
+	belongs_to :host
+	has_many :invitations
+	has_many :parties, :through => :invitations
 
 	# Validations
-  validates_presence_of :name, 
-												:email, 
-												:expected_attendees,
-												:party_id
+  validates_presence_of :name, :email, :host_id
 	validates_format_of :email, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "is not a valid format"
-	validates_numericality_of :expected_attendees
 
-	# Callbacks
-	before_save :add_invite_code
+	# Callbacks - none
 
 	# Scopes
 	scope :all, order(:name)
+	scope :for_host, lambda { |host_id| # ** Don't change 'host_id' to 'host', populate.rake passes an id to for_host
+		{ :conditions => ["host_id = ?", host_id] }
+	}
 
-	def add_invite_code
-		self.invite_code = rand(36**16).to_s(36)
-	end
 end

@@ -1,15 +1,15 @@
 <div id="mini-guest-list" class="right">
 		<table id="horz-Minimalist">
 			<thead>
-				<th width="200">Guest List:</th>
+				<th width="200">Invited Guests:</th>
 			</thead>
 		
-			<% for guest in @guests %>
+			<% for invitation in @invitations %>
 				<tr>
-					<td align="left"><%= link_to guest.name, guest%></td>
+					<td align="left"><%= link_to invitation.guest.name, invitation.guest%></td>
 				</tr>
 			<% end %>
-
+		
 		</table>
 	<p class="supertiny">&nbsp;</p>
 </div>

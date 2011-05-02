@@ -19,3 +19,9 @@ Feature: Standard Business
 		When I go to the home page
 		Then I should see "Webmaster" within "#footer"
 	
+	Scenario: Do not see the default rails page
+	  When I go to the home page
+	  Then I should not see "You're riding Ruby on Rails!"
+		And I should not see "About your application's environment"
+		And I should not see "Create your database"
+	

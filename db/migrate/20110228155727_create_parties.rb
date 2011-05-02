@@ -3,8 +3,9 @@ class CreateParties < ActiveRecord::Migration
     create_table :parties do |t|
       t.string :name
 			t.integer :host_id
+			t.integer :party_type_id
       t.date :party_date
-      t.string :location
+      t.integer :location_id
       t.time :start_time
       t.time :end_time
       t.string :description

@@ -5,9 +5,11 @@ class PartyType < ActiveRecord::Base
 		has_many :parties
 
 		# Validations
-		validates_presence_of :name, :active
+		validates_presence_of :name
 
 		# Scopes
-		scope :all, order(:name)
+		scope :all, :order => "name"
+
+		# Callbacks - none
 
 end

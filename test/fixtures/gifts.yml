@@ -1,0 +1,9 @@
+one:
+  invitation_id: 1
+  description: MyString
+  note_sent_on: 2011-04-30 21:23:29
+
+two:
+  invitation_id: 1
+  description: MyString
+  note_sent_on: 2011-04-30 21:23:29

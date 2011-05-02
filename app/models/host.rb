@@ -6,13 +6,17 @@ class Host < ActiveRecord::Base
 									:email, 
 									:password, 
 									:password_confirmation
+
   attr_accessor :password
+
+	# Callbacks
   before_save :prepare_password
 
 	# Relationships
 	has_many :parties
 	has_many :guests
 	has_many :locations
+	has_many :invitations, :through => :parties
 
 	# Scopes - none
 

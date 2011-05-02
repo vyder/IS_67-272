@@ -1,0 +1,39 @@
+<% title "My Invitations" %>
+
+<span id="button" class="button theme-color right">
+	<%= link_to image_tag("add-icon.ico"), :controller => 'invitations', :action => 'new' %>
+	<%= link_to "Add A New Invitation", :controller => 'invitations', :action => 'new' %>
+</span>
+
+<table id="horz-Minimalist">
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+			<th>Party</th>
+		  <th>Guest</th>
+		  <th>Expected</th>
+		  <th>Actual</th>
+		</tr>
+	</thead>
+
+	<!-- Table Body -->
+	<tbody>
+		<% for invitation in @invitations %>
+		  <tr>
+				<td><%= link_to invitation.party.name, invitation_path(invitation) %></td>
+				<td><%= link_to invitation.guest.name, invitation_path(invitation) %></td>
+		    <td align="center"><%= invitation.expected_attendees %></td>
+		    <td align="center"><%= invitation.actual_attendees %></td>
+		    <td><%= link_to image_tag("edit-icon.svg"), edit_invitation_path(invitation) %></td>
+		    <td><%= link_to image_tag("delete-icon.svg"), invitation, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+
+</table>
+
+<span>
+	<%= will_paginate @invitations, :previous_label => "Previous&nbsp;", 
+														 			:next_label => "&nbsp;Next" %>
+</span>

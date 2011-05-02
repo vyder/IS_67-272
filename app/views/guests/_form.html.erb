@@ -1,19 +1,16 @@
 <%= form_for @guest do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :party_id %> <%= f.collection_select :party_id, Party.group("name").order("name"), :id, :name %>
-  </p>
 	<br />
   <p>
     <%= f.label :name %> <%= f.text_field :name %>
   </p>
 	<br />
-<p>
+	<p>
     <%= f.label :email %> <%= f.text_field :email %>
   </p>
 	<br />
-  <p>
-    <%= f.label :expected_attendees %> <%= f.text_field :expected_attendees %>
+	<p>
+    <%= f.label :notes %> <%= f.text_field :notes %>
   </p>
 	<br />	<br />
 <!--

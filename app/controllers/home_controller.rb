@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-		@parties = Party.group("name").order("party_date", "start_time").paginate :page => params[:page], :per_page => 12
+		@parties = Party.upcoming.paginate :page => params[:page], :per_page => 12
 		@current_host = current_host
   end
 

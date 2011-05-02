@@ -19,7 +19,7 @@
 	<tbody>
 		<% for party_type in @party_types %>
 		  <tr>
-		    <td><%= link_to party_type.name, party %></td>
+		    <td><%= link_to party_type.name, party_type %></td>
 				<td><%= party_type.active %></td>
 		  </tr>
 		<% end %>

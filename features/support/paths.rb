@@ -29,6 +29,24 @@ module NavigationHelpers
     when /the new party page/
       new_party_path
       
+    when /my locations page/
+      locations_path
+      
+    when /the new location page/
+      new_location_path
+      
+    when /my house details page/
+      location_path(@home)
+    
+    when /my invitations page/
+      invitations_path
+      
+    when /the new invitation page/
+      new_invitation_path
+    
+    when /the rsvp page/
+      rsvp_path
+    
     when /edit the graduation party/
       edit_party_path(@grad)
     

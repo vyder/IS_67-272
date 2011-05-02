@@ -5,11 +5,16 @@
   </p>
 	<br />
   <p>
+		<%= f.label :party_type_id %> <%= f.collection_select :party_type_id, PartyType.all, :id, :name, :prompt => "Select ..." %>
+  </p>
+	<br />
+  <p>
     <%= f.label :party_date %> <%= f.date_select :party_date, :order => [:month, :day, :year] %>
   </p>
 	<br />
 	<p>
-		<%= f.label :location %> <%= f.text_field :location %>
+		<%= f.label :location_id %> <%= f.collection_select :location_id, Location.for_host(current_host), :id, :name, :prompt => "Select ..." %>
+<!--		<%= f.label :location %> <%= f.text_field :location %> -->
   </p>
 	<br />
   <p>
@@ -27,6 +32,8 @@
   <p>
     <%= f.label :rsvp_date %> <%= f.date_select :rsvp_date, :order => [:month, :day, :year] %>
   </p>
+	<br />
+
 	<br />
   <p><%= f.submit %></p>
 <% end %>

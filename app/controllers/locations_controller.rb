@@ -1,7 +1,9 @@
 class LocationsController < ApplicationController
+
+	before_filter :login_required
+
   def index
-		@locations = Location.all.paginate :page => params[:page], 
-																			 :per_page => 12
+		@locations = Location.all.for_host(current_host.id).paginate :page => params[:page], :per_page => 12
   end
 
   def show
@@ -14,8 +16,9 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(params[:location])
+		@location.host_id = current_host.id
     if @location.save
-      flash[:notice] = "Successfully created location."
+      flash[:notice] = "Location was successfully created"
       redirect_to @location
     else
       render :action => 'new'

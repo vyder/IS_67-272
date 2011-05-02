@@ -38,4 +38,4 @@ Feature: Manage account
     And I press "Log in"
 		Then I should see "You are now logged in"
 		And I should see "Welcome, An Heimann"
-	
+		

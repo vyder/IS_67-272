@@ -8,24 +8,12 @@
 	</p>
 -->
 	<p>
-		<strong>Party:</strong>
-		<%= @guest.party.name if !@guest.party.nil? %>
-	</p>
-	<p>
 		<strong>Email:</strong>
 		<%= @guest.email %>
 	</p>
 	<p>
-		<strong>Invite code:</strong>
-		<%= @guest.invite_code %>
-	</p>
-	<p>
-		<strong>Expected attendees:</strong>
-		<%= @guest.expected_attendees %>
-	</p>
-	<p>
-		<strong>Actual attendees:</strong>
-		<%= @guest.actual_attendees %>
+		<strong>Notes:</strong>
+		<%= @guest.notes %>
 	</p>
 	<br />
 	<p>

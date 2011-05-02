@@ -28,7 +28,3 @@
   <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", locations_path %>
 </p>
-
-<! -- <iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=<%= (@location.street.split(" ").join("+") + " " + @location.city + " " + @location.state + " " + @location.zip.to_s).split(" ").join("+") %> --> <!--&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=44.928295,80.244141&amp;ie=UTF8&amp;hq=&amp;hnear=<%= (@location.street.split(" ").join("+") + " " + @location.city + " " + @location.state + " " + @location.zip.to_s).split(" ").join("+") %>&amp;ll=<%= @location.latitude %>,<%= @location.longitude %>&amp;spn=0.029393,0.059996&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small> -->
-
-<!-- <a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=<%= (@location.street.split(" ").join("+") + " " + @location.city + " " + @location.state + " " + @location.zip.to_s).split(" ").join("+") %>&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=44.928295,80.244141&amp;ie=UTF8&amp;hq=&amp;hnear=<%= (@location.street.split(" ").join("+") + " " + @location.city + " " + @location.state + " " + @location.zip.to_s).split(" ").join("+") %>&amp;ll=<%= @location.latitude %>,<%= @location.longitude %>&amp;spn=0.029393,0.059996&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left" target="_blank">View Larger Map</a></small> -->

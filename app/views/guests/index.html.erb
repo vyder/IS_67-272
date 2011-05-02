@@ -10,10 +10,8 @@
 	<!-- Table Header -->
 	<thead>
 		<tr>
-			<th>Party</th>
 		  <th>Name</th>
-		  <th>Expected</th>
-		  <th>Actual</th>
+		  <th>Email</th>
 		</tr>
 	</thead>
 
@@ -21,13 +19,8 @@
 	<tbody>
 		<% for guest in @guests %>
 		  <tr>
-				<td>
-				<% if !guest.party.nil? %>
-				<%= link_to guest.party.name, party_path(guest.party) %>
-				<%end%></td>
 		    <td><%= link_to guest.name, guest %></td>
-		    <td align="center"><%= guest.expected_attendees %></td>
-		    <td align="center"><%= guest.actual_attendees %></td>
+				<td><%= guest.email %>
 		    <td><%= link_to image_tag("edit-icon.svg"), edit_guest_path(guest) %></td>
 		    <td><%= link_to image_tag("delete-icon.svg"), guest, :confirm => 'Are you sure?', :method => :delete %></td>
 		  </tr>

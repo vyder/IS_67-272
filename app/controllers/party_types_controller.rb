@@ -1,4 +1,7 @@
 class PartyTypesController < ApplicationController
+
+	before_filter :login_required
+
   def index
 		@party_types = PartyType.all.paginate :page => params[:page], :per_page => 12
   end

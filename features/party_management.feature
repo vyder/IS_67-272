@@ -9,22 +9,28 @@ Feature: Manage parties
 	# READ METHODS
 	Scenario: View my parties
 		When I go to my parties page
-		# Then show me the page
 		Then I should see "My Parties" within "h1"
 		And I should see "RSVPs"
 		And I should not see "Start time"
+		
+	Scenario: View only my parties
+		Given an existing birthday party
+		Given another host with parties
+		When I go to my parties page
+		Then I should see "Birthday!"
+		And I should not see "Toga Party"
 	
 	Scenario: View party details
-		# Given an existing graduation party
-		# When I go to the graduation party details page
+		Given an existing graduation party
+		When I go to the graduation party details page
 		# OR ...
-		Given an existing party with the following data:
-		  | name       | Graduation Party |
-		  | party_date | 2011-06-04       |
-		  | location   | My house         |
-		  | start_time | 12:00:00         |
-		  | end_time   | 15:00:00         |
-		When I go to this party details page
+		# Given an existing party with the following data:
+		# 		  | name        | Graduation Party |
+		# 		  | party_date  | 2011-06-04       |
+		# 		  | location_id | 1                |
+		# 		  | start_time  | 12:00:00         |
+		# 		  | end_time    | 15:00:00         |
+		# 		When I go to this party details page
 		Then I should see "No RSVP required"
 		And I should see "Graduation Party"	
 		And I should see "12:00 PM - 03:00 PM"
@@ -46,12 +52,19 @@ Feature: Manage parties
 	Scenario: Create a new party is successful
 		When I go to the new party page
 		And I fill in "party_name" with "Birthday for Dusty"
-		And I fill in "party_location" with "Our house"
-		And I select "2011-10-27" as the "party_party_date" date
-		And I select "2011-10-26" as the "party_rsvp_date" date
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "22:30:00" as the "party_end_time" time
-    And I press "Create Party"
+		And I select "My house" from "party_location_id"
+		And I select "Birthday Party" from "party_party_type_id"
+		And I select "2011" from "party_party_date_1i"
+		And I select "October" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "October" from "party_rsvp_date_2i"
+		And I select "26" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "22" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
+		And I press "Create Party"
 		Then I should see "Birthday for Dusty"	
 		And I should see "RSVP date: October 26, 2011"
 		And I should see "06:00 PM - 10:30 PM"
@@ -60,45 +73,91 @@ Feature: Manage parties
 		
 	Scenario: Create a new party fails without a name
 		When I go to the new party page
-		And I fill in "party_location" with "Our house"
-		And I select "2011-10-27" as the "party_party_date" date
-		And I select "2011-10-26" as the "party_rsvp_date" date
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "22:30:00" as the "party_end_time" time
-    And I press "Create Party"
+		And I select "My house" from "party_location_id"
+		And I select "Birthday Party" from "party_party_type_id"
+		And I select "2011" from "party_party_date_1i"
+		And I select "October" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "October" from "party_rsvp_date_2i"
+		And I select "26" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "22" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
+		And I press "Create Party"
 		Then I should see "Name can't be blank"	
-
+	
 	Scenario: Create a new party fails because date is in the past
 		When I go to the new party page
 		And I fill in "party_name" with "Birthday for Dusty"
-		And I fill in "party_location" with "Our house"
-		And I select "2011-01-01" as the "party_party_date" date
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "12:00:00" as the "party_end_time" time
+		And I select "My house" from "party_location_id"
+		And I select "Birthday Party" from "party_party_type_id"
+		And I select "2011" from "party_party_date_1i"
+		And I select "January" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "January" from "party_rsvp_date_2i"
+		And I select "26" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "22" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
 		And I press "Create Party"
 		Then I should see "Party date must be on or after"
 		
 	Scenario: Create a new party fails because rsvp date after party date
 		When I go to the new party page
 		And I fill in "party_name" with "Birthday for Dusty"
-		And I fill in "party_location" with "Our house"
-		And I select "2011-10-27" as the "party_party_date" date
-		And I select "2011-10-31" as the "party_rsvp_date" date
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "12:00:00" as the "party_end_time" time
+		And I select "Birthday Party" from "party_party_type_id"
+		And I select "My house" from "party_location_id" 
+		And I select "2011" from "party_party_date_1i"
+		And I select "October" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "October" from "party_rsvp_date_2i"
+		And I select "31" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "22" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
 		And I press "Create Party"
 		Then I should see "Rsvp date must be on or before"
 		
 	Scenario: Create an invalid party with end time before start time
 		When I go to the new party page
 		And I fill in "party_name" with "Birthday for Dusty"
-		And I fill in "party_location" with "Our house"
-		And I select "2011-10-27" as the "party_party_date" date
-		And I select "2011-10-26" as the "party_rsvp_date" date
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "12:00:00" as the "party_end_time" time
+		And I select "Birthday Party" from "party_party_type_id"
+		And I select "My house" from "party_location_id"
+		And I select "2011" from "party_party_date_1i"
+		And I select "October" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "October" from "party_rsvp_date_2i"
+		And I select "26" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "12" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
 		And I press "Create Party"
 		Then I should see "End time must be after"
+
+	Scenario: Create an invalid party with a missing party type
+		When I go to the new party page
+		And I fill in "party_name" with "Birthday for Dusty"
+		And I select "My house" from "party_location_id"
+		And I select "2011" from "party_party_date_1i"
+		And I select "October" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
+		And I select "2011" from "party_rsvp_date_1i"
+		And I select "October" from "party_rsvp_date_2i"
+		And I select "26" from "party_rsvp_date_3i"
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "22" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
+		And I press "Create Party"
+		Then I should see "Party type is not a number"
 		
 		
 	# UPDATE METHODS
@@ -117,12 +176,14 @@ Feature: Manage parties
 		And I fill in "party_name" with ""
 		And I press "Update Party"
 		Then I should see "Name can't be blank"
-
+	
 	Scenario: Edit an upcoming party fails because date is in the past
 		# use the @grad factory for this one...
 		Given an existing graduation party
 		When I go to edit the graduation party
-		And I select "2011-01-01" as the "party_party_date" date
+		And I select "2011" from "party_party_date_1i"
+		And I select "January" from "party_party_date_2i"
+		And I select "27" from "party_party_date_3i"
 		And I press "Update Party"
 		Then I should see "Party date must be on or after"
 		
@@ -130,7 +191,9 @@ Feature: Manage parties
 		# use the @grad factory for this one...
 		Given an existing graduation party
 		When I go to edit the graduation party
-		And I select "18:00:00" as the "party_start_time" time
-		And I select "12:00:00" as the "party_end_time" time
+		And I select "18" from "party_start_time_4i"
+		And I select "00" from "party_start_time_5i"
+		And I select "12" from "party_end_time_4i"
+		And I select "30" from "party_end_time_5i"
 		And I press "Update Party"
 		Then I should see "End time must be after"

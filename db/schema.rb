@@ -10,15 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429210629) do
+ActiveRecord::Schema.define(:version => 20110501012329) do
+
+  create_table "gifts", :force => true do |t|
+    t.integer  "invitation_id"
+    t.string   "description"
+    t.date     "note_sent_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "guests", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "invite_code"
-    t.integer  "party_id"
-    t.integer  "expected_attendees"
-    t.integer  "actual_attendees"
+    t.integer  "host_id"
+    t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,8 +40,20 @@ ActiveRecord::Schema.define(:version => 20110429210629) do
     t.datetime "updated_at"
   end
 
+  create_table "invitations", :force => true do |t|
+    t.integer  "party_id"
+    t.integer  "guest_id"
+    t.string   "invite_code"
+    t.integer  "expected_attendees"
+    t.integer  "actual_attendees"
+    t.boolean  "has_rsvpd"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "name"
+    t.integer  "host_id"
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -49,8 +67,9 @@ ActiveRecord::Schema.define(:version => 20110429210629) do
   create_table "parties", :force => true do |t|
     t.string   "name"
     t.integer  "host_id"
+    t.integer  "party_type_id"
     t.date     "party_date"
-    t.string   "location"
+    t.integer  "location_id"
     t.time     "start_time"
     t.time     "end_time"
     t.string   "description"

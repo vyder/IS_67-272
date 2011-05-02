@@ -14,5 +14,5 @@ Given /^an existing guest with the following data:$/ do |table|
 end
 
 Given /^an existing artis family guest$/ do
-  @artis = Factory.create(:guest, :party => @birthday)
+  @artis = Factory.create(:guest, :host => @an)
 end

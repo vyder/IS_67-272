@@ -1,0 +1,21 @@
+<% title "Gifts" %>
+
+<table>
+  <tr>
+    <th>Invitation</th>
+    <th>Description</th>
+    <th>Note Sent On</th>
+  </tr>
+  <% for gift in @gifts %>
+    <tr>
+      <td><%= gift.invitation_id %></td>
+      <td><%= gift.description %></td>
+      <td><%= gift.note_sent_on %></td>
+      <td><%= link_to "Show", gift %></td>
+      <td><%= link_to "Edit", edit_gift_path(gift) %></td>
+      <td><%= link_to "Destroy", gift, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Gift", new_gift_path(gift) %></p>

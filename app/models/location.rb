@@ -1,17 +1,20 @@
 class Location < ActiveRecord::Base
-    attr_accessible :name, :street, :city, :state, :zip, :latitude, :longitude
+    attr_accessible :name, :host_id, :street, :city, :state, :zip, :latitude, :longitude
 
 		# Relationships
 		belongs_to :host
 		has_many :parties
 
 		# Validations
-		validates_presence_of :name, :street, :city, :state, :zip
+		validates_presence_of :name, :street, :city, :state, :zip, :host_id
 		validates_format_of :zip, 	:with => /^\d{5}$/, 
 																:message => "zip code should be 5 digits only"
 
 		# Scopes
 		scope :all, order(:zip)
+		scope :for_host, lambda { |host_id| # ** Don't change 'host_id' to 'host', populate.rake passes an id to for_host
+			{ :conditions => ["host_id = ?", host_id] }
+		}
 
 	  # Callback
 		before_save :find_location_coordinates

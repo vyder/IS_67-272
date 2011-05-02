@@ -89,6 +89,20 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"(?: within "([^"]*)")?$/ do |value,
   end
 end
 
+# When /^(?:|I )fill into "([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
+#   value = @reay_invite.invite_code
+#   with_scope(selector) do
+#     fill_in(field, :with => value)
+#   end
+# end
+
+When /^(?:|I )fill in my invite code$/ do 
+  value = @reay_invite.invite_code
+  field = "invite_code"
+  fill_in(field, :with => value)
+end
+
+
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:
@@ -140,41 +154,42 @@ end
 
 
 # DATE AND TIME SELECTORS  (Capybara doesn't have same webrat methods, so need to add...)
- 
-When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date, prefix|
-  date = Chronic.parse(date)
- 
-  select date.year.to_s, :from => "#{prefix}_#{dt_suffix[:year]}"
-  select date.strftime('%B'), :from => "#{prefix}_#{dt_suffix[:month]}"
-  select date.day.to_s, :from => "#{prefix}_#{dt_suffix[:day]}"
-end
 
-When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" time$/ do |time, prefix|
-  time = Time.parse(time)
- 
-  select time.hour.to_s, :from => "#{prefix}_#{dt_suffix[:hour]}"
-  select time.min.to_s, :from => "#{prefix}_#{dt_suffix[:minute]}"
-end
-
-When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date and time$/ do |date, prefix|
-  date = Chronic.parse(date)
- 
-  select date.year.to_s, :from => "#{prefix}_#{dt_suffix[:year]}"
-  select date.strftime('%B'), :from => "#{prefix}_#{dt_suffix[:month]}"
-  select date.day.to_s, :from => "#{prefix}_#{dt_suffix[:day]}"
-  select date.hour.to_s, :from => "#{prefix}_#{dt_suffix[:hour]}"
-  select date.min.to_s, :from => "#{prefix}_#{dt_suffix[:minute]}"
-end
- 
-def dt_suffix
-   {
-    :year   => '1i',
-    :month  => '2i',
-    :day    => '3i',
-    :hour   => '4i',
-    :minute => '5i'
-  }
-end
+# When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date, prefix|
+#   date = Chronic.parse(date)
+#  
+#   select date.year.to_s, :from => "#{prefix}_#{dt_suffix[:year]}"
+#   select date.strftime('%B'), :from => "#{prefix}_#{dt_suffix[:month]}"
+#   select date.day.to_s, :from => "#{prefix}_#{dt_suffix[:day]}"
+# end
+# 
+# When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" time$/ do |time, prefix|
+#   time = Time.parse(time)
+#  
+#   select time.hour.to_s, :from => "#{prefix}_#{dt_suffix[:hour]}"
+#   select time.min.to_s, :from => "#{prefix}_#{dt_suffix[:minute]}"
+# end
+# 
+# When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date and time$/ do |date, prefix|
+#   date = Chronic.parse(date)
+#  
+#   select date.year.to_s, :from => "#{prefix}_#{dt_suffix[:year]}"
+#   select date.strftime('%B'), :from => "#{prefix}_#{dt_suffix[:month]}"
+#   select date.day.to_s, :from => "#{prefix}_#{dt_suffix[:day]}"
+#   select date.hour.to_s, :from => "#{prefix}_#{dt_suffix[:hour]}"
+#   select date.min.to_s, :from => "#{prefix}_#{dt_suffix[:minute]}"
+# end
+#  
+# def dt_suffix
+#    {
+#     :year   => '1i',
+#     :month  => '2i',
+#     :day    => '3i',
+#     :hour   => '4i',
+#     :minute => '5i'
+#   }
+# end
+# ========================
 
 
 When /^(?:|I )click on the link "([^"]*)"/ do |link_name|
@@ -234,7 +249,73 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, se
 end
 
 # ===================
-# CUSTOM: should not see for Actual Attendees on new guest page
+# CUSTOM: should see specific alt tags for location map
+Then /^should see the alt text "([^\"]*)"$/ do | alt_text |
+  page.should have_xpath("//img[@alt=#{alt_text}]")
+end
+
+# ===================
+# CUSTOM: should see specific src tag for location map of my house, ACAC
+Then /^(?:|I )should see a map of home$/ do
+  html = Nokogiri::HTML(page.body)
+  home_map = html.xpath '//img[@src="http://maps.google.com/maps/api/staticmap?center=40.597105,-80.063169&amp;zoom=15&amp;size=500x500&amp;maptype=roadmap&amp;markers=color:red%7Ccolor:red%7Clabel:A%7C40.597105,-80.063169&amp;sensor=false"]'
+  assert !home_map.nil?
+  # home_map.length.should eql(1)
+end
+
+Then /^(?:|I )should see a map of ACAC$/ do
+  html = Nokogiri::HTML(page.body)
+  acac_map = html.xpath '//img[@src="http://maps.google.com/maps/api/staticmap?center=40.452303,-80.00463&amp;zoom=15&amp;size=500x500&amp;maptype=roadmap&amp;markers=color:red%7Ccolor:red%7Clabel:A%7C40.452303,-80.00463&amp;sensor=false"]'
+  assert !acac_map.nil?
+end
+
+
+# ===================
+# CUSTOM: should not see for host_id on new locations page
+Then /^(?:|I )should not see host option$/ do 
+  possible_field_names = ['host_id', 'Host id', 'Host', 'host', 'location_host_id']
+  # found = Array.new
+  possible_field_names.each do |field|
+    if page.respond_to? field
+      page.should have_no_content(field)
+    else
+      assert page.has_no_content?(field)
+    end
+  end
+end
+
+
+# ===================
+# CUSTOM: should not see for latitude or longitude on new locations page
+Then /^(?:|I )should not see latitude longitude options$/ do 
+  possible_field_names = ['latitude', 'Latitude', 'longitude', 'Longitude', 'location_latitude', 'location_longitude', 'lat', 'lon']
+  # found = Array.new
+  possible_field_names.each do |field|
+    if page.respond_to? field
+      page.should have_no_content(field)
+    else
+      assert page.has_no_content?(field)
+    end
+  end
+end
+
+
+# ===================
+# CUSTOM: should not see for Expected Attendees on new guest page
+Then /^(?:|I )should not see expected attendees option$/ do 
+  possible_field_names = ['expected_attendees', 'expected_attendees', 'expected_guests', 'Expected attendees', 'guest_expected_attendees', 'guest_expected_attendees', 'guest_expected_guests']
+  # found = Array.new
+  possible_field_names.each do |field|
+    if page.respond_to? field
+      page.should have_no_content(field)
+    else
+      assert page.has_no_content?(field)
+    end
+  end
+end
+
+# ===================
+# CUSTOM: should not see for Actual Attendees on new guest or new invitation page
 Then /^(?:|I )should not see actual attendees option$/ do 
   possible_field_names = ['actual_attendees', 'confirmed_attendees', 'actual_guests', 'Actual attendees', 'guest_actual_attendees', 'guest_confirmed_attendees', 'guest_actual_guests']
   # found = Array.new
@@ -248,7 +329,7 @@ Then /^(?:|I )should not see actual attendees option$/ do
 end
 
 # ===================
-# CUSTOM: should not see for Invite Code on the new guest page
+# CUSTOM: should not see for Invite Code on the new guest or new invitation page
 Then /^(?:|I )should not see invite code option$/ do 
   possible_field_names = ['invite_code', 'invitation_code', 'Invite code', 'Invitation code','guest_invite_code', 'guest_invitation_code']
   # found = Array.new

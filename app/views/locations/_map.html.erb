@@ -2,11 +2,19 @@
 	<%= image_tag @location.create_map_link %>
 </div> -->
 
+<!-- fail nicely if the browser has no Javascript --> 
+<noscript>
+<b>JavaScript must be enabled in order for you to use Google Maps.</b> 
+However, it seems JavaScript is either disabled or not supported by your browser. 
+To view Google Maps, enable JavaScript by changing your browser options, and then 
+try again.
+</noscript> 
+
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=false">
 </script>
 <script type="text/javascript">
-  function initialize(lat, lon, lname) {
+  function initialize(lat, lon) {
 
 		// Save the coordinates in coords
     var coords = new google.maps.LatLng(lat, lon);
@@ -27,17 +35,25 @@
 		};
 		var marker = new google.maps.Marker(markerOptions);
 
-		// Add the marker to the map
-		map.addOverlay(marker);
+		// Create an infoWindow's options and the window itself
+		var infoWindowOptions = {
+			content: '<h3><%= @location.name %></h3><%= @location.street %>, <%= @location.city %>, <%= @location.state %> \n\n\n' + 
+							'<a href="http://maps.google.com/maps?saddr=&daddr=' + coords.toUrlValue() + '" target ="_blank">Directions<\/a>',
+			maxWidth: 200
+		};
 
-//		google.maps.event.addListener(marker, 'click', function() {
-	//    map.setZoom(8);
-	  //});
+		var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+		infoWindow.open(map, marker);
+		map.panBy(-50,-50);
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.open(map,marker);
+	  });
   }
 
 </script>
 
-<body onload="initialize(<%= @location.latitude %>, <%= @location.longitude %>, <%= @location.name %>)">
+<body onload="initialize(<%= @location.latitude %>, <%= @location.longitude %>)">
 	  <div id="map" style="width:350px; height:350px" class="right"></div>
 </body>
 
