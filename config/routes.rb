@@ -9,6 +9,8 @@ PartyManager::Application.routes.draw do
 
   get "home/index"
 
+	match '/rsvp/:id/:invite_code', :controller => "invitations", :action => "rsvp"
+
 	match "home" => 'home#index', :as => 'home'
 
 	match "home/index" => 'home#index', :as => 'home'

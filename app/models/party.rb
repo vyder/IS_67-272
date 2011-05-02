@@ -35,8 +35,8 @@ class Party < ActiveRecord::Base
 	scope :all, :order => "name"
 	scope :by_name, :order => "name"
 	scope :upcoming, :order => "party_date, start_time"
-	scope :for_host, lambda { |host| 
-		{ :conditions => ["host_id = ?", host.id] }
+	scope :for_host, lambda { |host_id| 
+		{ :conditions => ["host_id = ?", host_id] }
 	}
 
 	# Callbacks - none

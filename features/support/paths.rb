@@ -45,7 +45,7 @@ module NavigationHelpers
       new_invitation_path
     
     when /the rsvp page/
-      rsvp_path
+      rsvp_invitation_path
     
     when /edit the graduation party/
       edit_party_path(@grad)

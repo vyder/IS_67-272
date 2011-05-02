@@ -1,0 +1,14 @@
+<% title "RSVP" %>
+
+<%= form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :invite_code %> <%= f.text_field :invite_code %>
+  </p>
+	<br />
+  <p>
+    <%= f.label :actual_attendees %> <%= f.text_field :actual_attendees %>
+  </p>
+	<br /> 	<br />
+  <p><%= f.submit 'RSVP to Invitation'%></p>
+<% end %>

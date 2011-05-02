@@ -18,7 +18,7 @@
 </p>
 <% if !@invitation.party.rsvp_date.nil? %>
 <p>
-	<% if @invitation.actual_attendees != -1 %>
+	<% if !@invitation.actual_attendees.nil? %>
 		<strong>Actual attendees:</strong>
 	  <%= @invitation.actual_attendees %>
 	<% else %>

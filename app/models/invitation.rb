@@ -11,6 +11,7 @@ class Invitation < ActiveRecord::Base
 		validates_presence_of :party_id
 		validates_presence_of :guest_id, :message => "Guest is not a number"
 		validates_numericality_of :expected_attendees, :only_integer => true, :greater_than => 0
+		validates_numericality_of :actual_attendees, :on => :update, :only_integer => true, :greater_than_or_equal_to => 0
 
 		# Scopes
 		scope :all, order(:guest_id)
@@ -20,13 +21,16 @@ class Invitation < ActiveRecord::Base
 		scope :for_guest, lambda { |guest_id|
 			{ :conditions => ["guest_id = ?", guest_id] }
 		}
+		scope :get_existing, lambda { |party_id, guest_id|
+			{ :conditions => ["party_id = ? AND guest_id = ?", party_id, guest_id] }
+		}
 
 		# Callbacks
 		before_save :add_invite_code
 
 		# Model Methods
 		def add_invite_code
-			self.invite_code = rand(36**16).to_s(36)
+			self.invite_code = rand(36**16).to_s(36) unless !self.invite_code.nil?
 		end
 
 end

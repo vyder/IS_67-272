@@ -1,0 +1,14 @@
+Hello,
+
+You're invited to this my awesome party, <%= @party.name %>!
+
+<% if !@party.rsvp_date.nil? %>
+
+Follow the link below and enter your invite code, <%= @invite_code %> to RSVP!
+
+localhost:3000/rsvp/<%= @invitation.id %>/<%= @invite_code %>
+
+<% end %>
+
+See you soon,
+The PartyManager
