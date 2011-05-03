@@ -9,7 +9,15 @@ PartyManager::Application.routes.draw do
 
   get "home/index"
 
-	match '/rsvp/:id/:invite_code', :controller => "invitations", :action => "rsvp"
+	match '/rsvp', :controller => "invitations", :action => "rsvp"
+
+	match 'invite' => 'invitations#invite'
+
+	match 'rsvp_complete' => 'invitations#rsvp_complete'
+
+	match 'rsvp_complete/:id' => 'invitations#rsvp_complete', :as => 'rsvp_complete'
+
+	match '/rsvp/:invite_code', :controller => "invitations", :action => "rsvp"
 
 	match "home" => 'home#index', :as => 'home'
 

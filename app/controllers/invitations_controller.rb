@@ -50,7 +50,8 @@ class InvitationsController < ApplicationController
   end
 
   def update
-    @invitation = Invitation.find(params[:id])
+		@invitation = Invitation.find(params[:id])
+
     if @invitation.update_attributes(params[:invitation])
       flash[:notice] = "Successfully updated invitation."
       redirect_to invitation_url
@@ -60,20 +61,28 @@ class InvitationsController < ApplicationController
   end
 
 	def rsvp
-		begin
-			@invitation = Invitation.find(params[:id])
-			@invitation_code = params[:invite_code]
-
-			if @invitation.invite_code == @invitation_code
-				flash[:notice] = "Please update the number of people attending"
-				render 'rsvp'
-			else
-				raise "Invite code mismatch"
-			end
-		rescue
-			flash[:error] = "RSVP failed! [invalid url]"
-			render 'rsvp_failed'
+		@invitation = Invitation.new
+		if params.has_key?(:invite_code)
+			@invite_code = params[:invite_code]
 		end
+	end
+
+	def invite
+		@invitation = Invitation.get_by_invite_code(params[:invite_code]).first
+		if !@invitation.nil?
+			@party = @invitation.party
+			@invitation_id = @invitation.id
+		end
+	end
+
+	def rsvp_complete
+		@invitation = Invitation.find(params[:id])
+		@actual_attendees = params[:invitation_actual_attendees]
+		@invitation.actual_attendees = @actual_attendees
+
+		if @invitation.update_attributes(params[:invitation])
+      flash[:notice] = "Successfully updated invitation."
+    end
 	end
 
   def destroy

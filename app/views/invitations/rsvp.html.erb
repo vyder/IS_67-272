@@ -1,14 +1,7 @@
-<% title "RSVP" %>
+<% title "RSVP Step 1 of 2 - Enter your Invite Code" %>
 
-<%= form_for @invitation do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :invite_code %> <%= f.text_field :invite_code %>
-  </p>
-	<br />
-  <p>
-    <%= f.label :actual_attendees %> <%= f.text_field :actual_attendees %>
-  </p>
-	<br /> 	<br />
-  <p><%= f.submit 'RSVP to Invitation'%></p>
+<%= form_tag({:controller => "invitations", :action => "invite"}, :method => "post") do %>
+  <%= label_tag(:invite_code, "Invite Code:") %>
+  <%= text_field_tag(:invite_code, @invite_code) %>
+  <%= submit_tag("Enter") %>
 <% end %>

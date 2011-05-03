@@ -8,9 +8,9 @@ class Invitation < ActiveRecord::Base
 		has_one :host, :through => :party
 
 		# Validations
-		validates_presence_of :party_id
-		validates_presence_of :guest_id, :message => "Guest is not a number"
-		validates_numericality_of :expected_attendees, :only_integer => true, :greater_than => 0
+		validates_presence_of :party_id, :on => :create
+		validates_presence_of :guest_id, :message => "Guest is not a number", :on => :create
+		validates_numericality_of :expected_attendees, :only_integer => true, :greater_than => 0, :on => :create
 		validates_numericality_of :actual_attendees, :on => :update, :only_integer => true, :greater_than_or_equal_to => 0
 
 		# Scopes
@@ -23,6 +23,9 @@ class Invitation < ActiveRecord::Base
 		}
 		scope :get_existing, lambda { |party_id, guest_id|
 			{ :conditions => ["party_id = ? AND guest_id = ?", party_id, guest_id] }
+		}
+		scope :get_by_invite_code, lambda { |invite_code|
+			{ :conditions => ["invite_code = ?", invite_code] }
 		}
 
 		# Callbacks
