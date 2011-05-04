@@ -30,10 +30,6 @@ class PartyTest < ActiveSupport::TestCase
 			@party1.name = "Birthday"
 			@party1.host_id = @host.id
 
-#			@party2 = Party.new
-#			@party2.name = "Graduation"
-#			@party2.host_id = @host.id
-
 			@party2 = Factory.create(:party, :host_id => @host.id, :name => "Graduation")
 		end
 		
@@ -48,22 +44,21 @@ class PartyTest < ActiveSupport::TestCase
 
 		# Checks that the parties have the right data by checking one of them
 		should "show that the parties is created properly" do
-			assert_equal "Bob", @guest1.name
-			assert_equal "bob@example.com", @guest1.email
+			assert_equal "Birthday", @party1.name
+			assert_equal @host.id, @party1.host_id
 		end
 
 		## Testing Scopes ##
 
 		# scope :all
-		should "show that all the guest are listed alphabetically" do
-			assert_equal 3, Guest.all.size
-			assert_equal ["Bob", "Jack", "Mark"], Guest.all.map{|g| g.name}
+		should "show that all the parties are listed alphabetically" do
+			assert_equal 2, Party.all.size
+			assert_equal ["Birthday", "Graduation"], Party.all.map{|p| p.name}
 		end
 	
 		# scope :for_host(host_id)
 		should "have scope for_host that works" do
-			assert_equal 2, Guest.for_host(1).size
-			assert_equal 1, Guest.for_host(2).size
+			assert_equal 2, Party.for_host(1).size
 		end
 
 		## Testing Callbacks ## - none to test
