@@ -12,26 +12,26 @@ class PartyTest < ActiveSupport::TestCase
 
 	# ------------------------------------------------------------------
   # Context to test confirmed and expected guest calculation functions
-	context "Party evaluates number of guests correctly" do
-		setup do
-			@party = Factory.create(:party)
-		end
+#	context "Party evaluates number of guests correctly" do
+#		setup do
+#			@party = Factory.create(:party)
+#		end
 
-		teardown do
-			@party.destroy
-		end
+#		teardown do
+#			@party.destroy
+#		end
 
 		# now run the tests:
 
 		# test the counting of confirmed guests
-		should "shows that party has 0 confirmed guests" do
-			assert_equal 0, @party.confirmed
-		end
+#		should "shows that party has 0 confirmed guests" do
+#			assert_equal 0, @party.confirmed
+#		end
 
 		# test the counting of expected guests
-		should "shows that party has 0 expected guests" do
-			assert_equal 0, @party.expected
-		end
-	end
+#		should "shows that party has 0 expected guests" do
+#			assert_equal 0, @party.expected
+#		end
+#	end
 
 end

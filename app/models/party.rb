@@ -34,7 +34,7 @@ class Party < ActiveRecord::Base
 	# Scopes
 	scope :all, :order => "name"
 	scope :by_name, :order => "name"
-	scope :upcoming, :order => "party_date, start_time"
+	scope :upcoming, :order => "party_date, start_time", :limit => 5
 	scope :for_host, lambda { |host_id| 
 		{ :conditions => ["host_id = ?", host_id] }
 	}

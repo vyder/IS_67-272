@@ -11,7 +11,7 @@ class Invitation < ActiveRecord::Base
 		validates_presence_of :party_id, :on => :create
 		validates_presence_of :guest_id, :message => "Guest is not a number", :on => :create
 		validates_numericality_of :expected_attendees, :only_integer => true, :greater_than => 0, :on => :create
-		validates_numericality_of :actual_attendees, :on => :update, :only_integer => true, :greater_than_or_equal_to => 0
+		validates_numericality_of :actual_attendees, :only_integer => true, :greater_than_or_equal_to => 0, :on => :update
 
 		# Scopes
 		scope :all, order(:guest_id)
