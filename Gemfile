@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
 # db
-gem 'pg'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'taps', '0.3.24'
+# gem 'pg'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'taps', '0.3.24'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'chronic'
