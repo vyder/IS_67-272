@@ -1,5 +1,9 @@
 # My 67-272 project from Spring 2011
 
+App is deployed at: vidur-partymanager-272.herokuapp.com
+
+---
+
 ### ReadMe File - @author: Vidur Murali (vidur.murali@gmail.com)
 
 Hello TA,
