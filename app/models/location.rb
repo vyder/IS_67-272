@@ -24,11 +24,10 @@ class Location < ActiveRecord::Base
 
 	# Functions
 	# Create a static map - ## not required since dynamic maps have been implemented
-	# def create_map_link
-	#		locationMarker = "&markers=color:red%7Ccolor:red%7C#{latitude},#{longitude}"
-	#		map = "http://maps.google.com/maps/api/staticmap?center=#{latitude},#{longitude}&zoom=15&size=350x350&maptype=roadmap#{locationMarker}&sensor=false"
-	#		return true
-	#	end
+  def create_map_link
+    locationMarker = "&markers=color:red%7Ccolor:red%7C#{latitude},#{longitude}"
+    map = "http://maps.google.com/maps/api/staticmap?center=#{latitude},#{longitude}&zoom=15&size=350x350&maptype=roadmap#{locationMarker}&sensor=false"
+  end
 
 	private
 	def find_location_coordinates

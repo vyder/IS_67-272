@@ -22,7 +22,7 @@ namespace :db do
       a.save!
     end
     
-    
+    puts "Step 2"
     # Step 2: Add some hosts to the system
     Host.populate 12 do |host|
       # get some fake data using the Faker gem
@@ -36,6 +36,7 @@ namespace :db do
       host.created_at = Time.now
       host.updated_at = Time.now
       
+    puts "Step 2A"
       # Step 2A: Add some guests for this host
       Guest.populate 15..25 do |guest|
         guest.host_id = host.id
@@ -65,6 +66,7 @@ namespace :db do
         guest.updated_at = Time.now
       end
       
+    puts "Step 2B"
       # Step 2B: Add some locations to hold parties at
       locations = {"Carnegie Mellon" => "5000 Forbes Avenue;15213", "Convention Center" => "1000 Fort Duquesne Blvd;15222", "Point State Park" => "101 Commonwealth Place;15222"}
       locations.each do |location|
@@ -81,6 +83,7 @@ namespace :db do
       end
     end
         
+    puts "Step 3"
     # Step 3: add 2 to 12 parties per host
     Host.all.each do |host|
 #			guests = host.guests
@@ -107,6 +110,7 @@ namespace :db do
         party.created_at = Time.now
         party.updated_at = Time.now   
       
+    puts "Step 3A"
         # Step 3A: add 10 to 50 invitations per party (if there are any guests yet...)
         no_invitations = rand(10)
         unless no_invitations.zero?
