@@ -1,6 +1,6 @@
 # My 67-272 project from Spring 2011
 
-App is deployed at: http://vidur-partymanager-272.herokuapp.com
+App is deployed at: http://vidur-partymanager-272.heroku.com
 
 ---
 
