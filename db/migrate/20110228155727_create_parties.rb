@@ -8,7 +8,7 @@ class CreateParties < ActiveRecord::Migration
       t.integer :location_id
       t.time :start_time
       t.time :end_time
-      t.string :description
+      t.text :description
       t.date :rsvp_date
       t.timestamps
     end

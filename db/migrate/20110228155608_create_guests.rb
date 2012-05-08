@@ -4,7 +4,7 @@ class CreateGuests < ActiveRecord::Migration
       t.string :name
       t.string :email
 			t.integer :host_id
-			t.string :notes
+			t.text :notes
       t.timestamps
     end
   end
